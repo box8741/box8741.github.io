@@ -1,8 +1,23 @@
-import React from 'react'
-import Text from 'components/Text'
+import React, { FunctionComponent } from 'react'
+import styled from '@emotion/styled'
+import GlobalStyle from 'components/Common/GlobalStyle'
+import Introduction from 'components/Main/introduction'
+import Footer from 'components/Common/Footer'
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`
 
 const IndexPage = () => {
-  return <Text text="Home" />
+  return (
+    <Container>
+      <GlobalStyle />
+      <Introduction />
+      <Footer />
+    </Container>
+  )
 }
 
 export default IndexPage
