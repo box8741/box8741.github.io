@@ -1,12 +1,16 @@
 import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
-import { Link } from 'gatsby'
+import { Link, GatsbyLinkProps } from 'gatsby'
 
 export type CategoryListProps = {
   selectedCategory: string
   categoryList: {
     [key: string]: number
   }
+}
+
+type CategoryItemProps = Omit<GatsbyLinkProps<{}>, 'ref'> & {
+  active: boolean
 }
 
 const CategoryListWrapper = styled.div`
@@ -22,7 +26,7 @@ const CategoryListWrapper = styled.div`
   }
 `
 
-const CategoryItem = styled(Link)<{ active: boolean }>`
+const CategoryItem = styled(({ active, ...props }: CategoryItemProps) => <Link {...props} />)`
   margin-right: 20px;
   padding: 5px 0;
   font-size: 18px;
