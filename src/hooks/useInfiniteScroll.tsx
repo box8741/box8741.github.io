@@ -27,9 +27,8 @@ const useInfiniteScroll = (selectedCategory: string, posts: PostListItemType[]):
 
   const observer: IntersectionObserver = new IntersectionObserver(([entries], observer) => {
     if (!entries.isIntersecting) return
-
+    observer.unobserve(entries.target)
     setCount(value => value + 1)
-    observer.disconnect()
   })
 
   useEffect(() => setCount(1), [selectedCategory])
@@ -43,6 +42,7 @@ const useInfiniteScroll = (selectedCategory: string, posts: PostListItemType[]):
       return
 
     observer.observe(containerRef.current?.children[containerRef.current.children.length - 1])
+    return () => observer.disconnect()
   }, [count, selectedCategory])
 
   return { containerRef, postList: postListByCategory.slice(0, count * NUMBER_OF_ITEMS_PER_PAGE) }
