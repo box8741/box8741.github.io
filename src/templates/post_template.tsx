@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
 import Template from 'components/Common/Template'
 import PostHead from 'components/Post/PostHead'
+import PostContent from 'components/Post/PostContent'
 
 import { PostFrontmatterType } from 'types/PostItem.types'
 
@@ -43,6 +44,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
   return (
     <Template>
       <PostHead title={title} date={date} categories={categories} thumbnail={gatsbyImageData} />
+      <PostContent html={html} />
     </Template>
   )
 }
