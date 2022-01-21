@@ -1,14 +1,5 @@
-// exports.createPages = async ({ actions }) => {
-//   const { createPage } = actions
-//   createPage({
-//     path: '/using-dsg',
-//     component: require.resolve('./src/templates/using-dsg.js'),
-//     context: {},
-//     defer: true,
-//   })
-// }
-
 const path = require('path')
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
   const output = getConfig().output || {}
@@ -23,4 +14,52 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
       },
     },
   })
+}
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode })
+    createNodeField({ node, name: `slug`, value: slug })
+  }
+}
+
+exports.createPages = async ({ actions, graphql, reporter }) => {
+  const { createPage } = actions
+
+  const queryAllMarkdownData = await graphql(
+    `
+      {
+        allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+            }
+          }
+        }
+      }
+    `,
+  )
+
+  if (queryAllMarkdownData.errors) {
+    reporter.panicOnBuild(`Error while running query`)
+    return
+  }
+
+  queryAllMarkdownData.data.allMarkdownRemark.edges.forEach(
+    ({
+      node: {
+        fields: { slug },
+      },
+    }) => {
+      createPage({
+        path: slug,
+        component: path.resolve(__dirname, 'src/templates/post_template.tsx'),
+        context: { slug },
+      })
+    },
+  )
 }
