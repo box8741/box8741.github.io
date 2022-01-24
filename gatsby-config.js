@@ -6,6 +6,14 @@ module.exports = {
     siteUrl: `https://box8741.github.io`,
   },
   plugins: [
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: 'https://box8741.github.io',
+        stripQueryString: true,
+      },
+    },
     {
       resolve: 'gatsby-plugin-typescript',
       options: {

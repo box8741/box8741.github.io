@@ -2028,6 +2028,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.9.tgz#0b7f161afb5b1cc12518d29b2cdc7175d5490628"
   integrity sha512-5dNBXu/FOER+EXnyah7rn8xlNrfMOQb/qXnw4NQgLkCygKBKhdmF/CA5oXVOKZLBEahw8s2WP9LxIcN/oDDRgQ==
 
+"@types/node@^17.0.5":
+  version "17.0.10"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.10.tgz#616f16e9d3a2a3d618136b1be244315d95bd7cab"
+  integrity sha512-S/3xB4KzyFxYGCppyDt68yzBU9ysL88lSdIah4D6cptdcltc4NCPCAMc0+PCpg/lLIyC7IPvj2Z52OJWeIUkog==
+
 "@types/node@^8.5.7":
   version "8.10.66"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.66.tgz#dd035d409df322acc83dff62a602f12a5783bbb3"
@@ -2089,6 +2094,13 @@
   integrity sha512-YyP+VfeaqAyFmXoTh3HChxOQMyjByRMsHU7kc5KOJkSlXudhMhQIALbYV7rHh/l8d2lX3VUQzprrcAgWdRuU8g==
   dependencies:
     "@types/glob" "*"
+    "@types/node" "*"
+
+"@types/sax@^1.2.1":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@types/sax/-/sax-1.2.4.tgz#8221affa7f4f3cb21abd22f244cfabfa63e6a69e"
+  integrity sha512-pSAff4IAxJjfAXUG6tFkO7dsSbTmf8CtUpfhhZ5VhkRpC4628tJhh3+V6H1E+/Gs9piSzYKT5yzHO5M4GG9jkw==
+  dependencies:
     "@types/node" "*"
 
 "@types/scheduler@*":
@@ -2590,6 +2602,11 @@ arg@^4.1.0:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/arg/-/arg-4.1.3.tgz#269fc7ad5b8e42cb63c896d5666017261c144089"
   integrity sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==
+
+arg@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/arg/-/arg-5.0.1.tgz#eb0c9a8f77786cad2af8ff2b862899842d7b6adb"
+  integrity sha512-e0hDa9H2Z9AwFkk2qDlwhoMYE4eToKarchkQHovNdLTCYMHZHeRjI71crOh+dio4K6u1IcwubQqo79Ga4CyAQA==
 
 argparse@^1.0.7:
   version "1.0.10"
@@ -5356,6 +5373,13 @@ gatsby-page-utils@^2.5.2:
     lodash "^4.17.21"
     micromatch "^4.0.4"
 
+gatsby-plugin-canonical-urls@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-canonical-urls/-/gatsby-plugin-canonical-urls-4.5.0.tgz#9c053316e9d5836445b2eb9b5b36f0d7087fbdfb"
+  integrity sha512-wJn1PFOIwEBuYoOC2fAvCWgSFRcF+w9gWXbaQtWCRjXK0BOxSMbPPD8tpqMW5htcBcyaRU1dtkPkG8z7rhgNbA==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+
 gatsby-plugin-emotion@^7.5.0:
   version "7.5.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-emotion/-/gatsby-plugin-emotion-7.5.0.tgz#2f49e295f60cc884660664f45c3a6492ab24221e"
@@ -5443,6 +5467,16 @@ gatsby-plugin-sharp@^4.5.2:
     sharp "^0.29.3"
     svgo "1.3.2"
     uuid "3.4.0"
+
+gatsby-plugin-sitemap@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sitemap/-/gatsby-plugin-sitemap-5.5.0.tgz#d82bb8454711ffad2747cb2ed8d6e8e184b7ffa7"
+  integrity sha512-M98bxeJ6O4fPeefc35nv9q44D2RREdpnhPf0q6pDIJuGhXtdwXesSCCi6/4hZOUfOHyOYwxoKPlE7p7zx4SqWw==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    common-tags "^1.8.2"
+    minimatch "^3.0.4"
+    sitemap "^7.0.0"
 
 gatsby-plugin-typescript@^4.5.2:
   version "4.5.2"
@@ -10008,6 +10042,16 @@ sisteransi@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
+
+sitemap@^7.0.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/sitemap/-/sitemap-7.1.0.tgz#300cd8b3fa9d45fb63f9b56d962785c3cd799362"
+  integrity sha512-OctwI2RYFj3Lnoutix0Qhow3AvDoUQ7rsSyzrY8wFKHqXYvmCJXFOBZyVU4/DDtsQ2KnEWY4j4j80hBHBOVEWQ==
+  dependencies:
+    "@types/node" "^17.0.5"
+    "@types/sax" "^1.2.1"
+    arg "^5.0.0"
+    sax "^1.2.4"
 
 slash@^3.0.0:
   version "3.0.0"
