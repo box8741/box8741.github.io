@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import Template from 'components/Common/Template'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
@@ -20,12 +20,14 @@ type PostTemplateProps = {
       edges: PostPageItemType[]
     }
   }
+  location: PageProps['location']
 }
 
 const PostTemplate: FunctionComponent<PostTemplateProps> = ({
   data: {
     allMarkdownRemark: { edges },
   },
+  location: { href },
 }) => {
   const {
     node: {
@@ -37,13 +39,14 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
         categories,
         thumbnail: {
           childImageSharp: { gatsbyImageData },
+          publicURL,
         },
       },
     },
   } = edges[0]
 
   return (
-    <Template>
+    <Template title={title} description={summary} url={href} image={publicURL}>
       <PostHead title={title} date={date} categories={categories} thumbnail={gatsbyImageData} />
       <PostContent html={html} />
       <CommentWidget />
@@ -68,6 +71,7 @@ export const queryMarkdownDataBySlug = graphql`
               childImageSharp {
                 gatsbyImageData
               }
+              publicURL
             }
           }
         }
