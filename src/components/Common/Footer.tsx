@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 
-const FooterWrapper = styled.div`
+const FooterWrapper = styled.footer`
   margin-top: auto;
   padding: 50px 0;
   font-size: 15px;
