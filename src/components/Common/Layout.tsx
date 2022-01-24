@@ -2,9 +2,10 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import styled from '@emotion/styled'
 import { Helmet } from 'react-helmet'
 import GlobalStyle from 'components/Common/GlobalStyle'
+import Header from 'components/Common/Header'
 import Footer from 'components/Common/Footer'
 
-type TemplateProps = {
+type LayoutProps = {
   title: string
   description: string
   url: string
@@ -18,7 +19,7 @@ const Container = styled.main`
   height: 100%;
 `
 
-const Template: FunctionComponent<TemplateProps> = ({ title, description, url, image, children }) => {
+const Layout: FunctionComponent<LayoutProps> = ({ title, description, url, image, children }) => {
   return (
     <Container>
       <Helmet>
@@ -45,10 +46,11 @@ const Template: FunctionComponent<TemplateProps> = ({ title, description, url, i
         <html lang="ko" />
       </Helmet>
       <GlobalStyle />
+      <Header />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </Container>
   )
 }
 
-export default Template
+export default Layout

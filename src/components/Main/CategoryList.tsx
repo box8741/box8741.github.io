@@ -47,7 +47,7 @@ const CategoryList: FunctionComponent<CategoryListProps> = ({ selectedCategory, 
     <CategoryListWrapper>
       {Object.entries(categoryList).map(([name, count]) => {
         return (
-          <CategoryItem to={`/?category=${name}`} active={name === selectedCategory} key={name}>
+          <CategoryItem to={`/blog/?category=${name}`} active={name === selectedCategory} key={name}>
             #{name}({count})
           </CategoryItem>
         )

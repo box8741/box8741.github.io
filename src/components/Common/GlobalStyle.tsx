@@ -2,13 +2,18 @@ import React, { FunctionComponent } from 'react'
 import { Global, css } from '@emotion/react'
 
 const defaultStyle = css`
-  @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+  @font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
 
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Nanum Myeongjo', serif;
+    font-family: 'GowunDodum-Regular', serif;
   }
 
   html,

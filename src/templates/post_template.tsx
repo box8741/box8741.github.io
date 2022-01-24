@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { graphql, PageProps } from 'gatsby'
-import Template from 'components/Common/Template'
+import Layout from 'components/Common/Layout'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommonWidget'
@@ -46,11 +46,11 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
   } = edges[0]
 
   return (
-    <Template title={title} description={summary} url={href} image={publicURL}>
+    <Layout title={title} description={summary} url={href} image={publicURL}>
       <PostHead title={title} date={date} categories={categories} thumbnail={gatsbyImageData} />
       <PostContent html={html} />
       <CommentWidget />
-    </Template>
+    </Layout>
   )
 }
 
