@@ -7,17 +7,22 @@ type IntroductionProps = {
   profileImage: IGatsbyImageData
 }
 
-const Background = styled.div`
+const IntroductionWrapper = styled.div`
+  min-height: calc(100vh - 80px);
   width: 100%;
-  background: linear-gradient(60deg, #29323c 0%, #485563 100%);
-  color: #ffffff;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 60px);
+  }
 `
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   width: 768px;
   height: 400px;
   margin: 0 auto;
@@ -50,15 +55,15 @@ const Title = styled.div`
 
 const Introduction: FunctionComponent<IntroductionProps> = ({ profileImage }) => {
   return (
-    <Background>
+    <IntroductionWrapper>
       <Wrapper>
         <ProfileImage profileImage={profileImage} />
         <div>
-          <SubTitle>Nice to Meet you,</SubTitle>
-          <Title>I'm Junior Frontend Developer Min.</Title>
+          <Title>안녕하세요 개발자 박민국 입니다.</Title>
+          <SubTitle>개발자들 사이에서 한 번쯤 들어봤을 만한 사람이 되는 게 꿈입니다.</SubTitle>
         </div>
       </Wrapper>
-    </Background>
+    </IntroductionWrapper>
   )
 }
 

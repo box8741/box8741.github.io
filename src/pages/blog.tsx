@@ -3,7 +3,6 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { graphql, PageProps } from 'gatsby'
 import queryString, { ParsedQuery } from 'query-string'
 import Layout from 'components/Common/Layout'
-import Introduction from 'components/Main/Introduction'
 import CategoryList, { CategoryListProps } from 'components/Main/CategoryList'
 import PostList from 'components/Main/PostList'
 
@@ -66,7 +65,6 @@ const BlogPage: FunctionComponent<BlogPageProps> = ({
 
   return (
     <Layout {...PAGE_METADATA} url={href} image={publicURL}>
-      {/* <Introduction profileImage={gatsbyImageData} /> */}
       <CategoryList selectedCategory={selectedCategory} categoryList={categoryList} />
       <PostList selectedCategory={selectedCategory} posts={edges} />
     </Layout>

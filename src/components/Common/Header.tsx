@@ -12,7 +12,7 @@ const HeaderWrapper = styled.header`
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 60px;
+    min-height: 60px;
     padding: 0 20px;
   }
 `
@@ -23,10 +23,19 @@ const List = styled.ul`
 `
 
 const ListItem = styled(Link)`
+  font-size: 18px;
+  font-weight: 400;
   margin-right: 20px;
   cursor: pointer;
+
   &:last-of-type {
     margin-right: 0;
+  }
+  &:hover {
+    opacity: 0.7;
+  }
+  &.active {
+    font-weight: 800;
   }
 `
 
@@ -35,9 +44,15 @@ const Header = () => {
     <HeaderWrapper>
       <Title>Developer Min</Title>
       <List>
-        <ListItem to="/">Home</ListItem>
-        <ListItem to="/about">About</ListItem>
-        <ListItem to="/blog">Blog</ListItem>
+        <ListItem to="/" activeClassName="active">
+          Home
+        </ListItem>
+        <ListItem to="/about" activeClassName="active">
+          About
+        </ListItem>
+        <ListItem to="/blog" activeClassName="active">
+          Blog
+        </ListItem>
       </List>
     </HeaderWrapper>
   )
