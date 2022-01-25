@@ -10,6 +10,7 @@ import { PostFrontmatterType } from 'types/PostItem.types'
 export type PostPageItemType = {
   node: {
     html: string
+    tableOfContents: string
     frontmatter: PostFrontmatterType
   }
 }
@@ -32,6 +33,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
   const {
     node: {
       html,
+      tableOfContents,
       frontmatter: {
         title,
         summary,
@@ -48,7 +50,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
   return (
     <Layout title={title} description={summary} url={href} image={publicURL}>
       <PostHead title={title} date={date} categories={categories} thumbnail={gatsbyImageData} />
-      <PostContent html={html} />
+      <PostContent html={html} tableOfContents={tableOfContents} />
       <CommentWidget />
     </Layout>
   )
@@ -62,6 +64,7 @@ export const queryMarkdownDataBySlug = graphql`
       edges {
         node {
           html
+          tableOfContents
           frontmatter {
             title
             summary

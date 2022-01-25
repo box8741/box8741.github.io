@@ -1,16 +1,28 @@
 import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
+import TableOfContents from 'components/Post/TableOfContents'
 
 interface PostContentProps {
   html: string
+  tableOfContents: string
 }
+
+const PostWrapper = styled.div`
+  width: 768px;
+  margin: 0 auto;
+`
+
+const PostContentWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 768px 250px;
+  margin: 160px 0;
+`
 
 const MarkdownRenderer = styled.div`
   display: flex;
   flex-direction: column;
   width: 768px;
   margin: 0 auto;
-  padding: 100px 0;
   word-break: break-all;
 
   line-height: 1.8;
@@ -119,8 +131,15 @@ const MarkdownRenderer = styled.div`
   }
 `
 
-const PostContent: FunctionComponent<PostContentProps> = function ({ html }) {
-  return <MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />
+const PostContent: FunctionComponent<PostContentProps> = function ({ html, tableOfContents }) {
+  return (
+    <PostWrapper>
+      <PostContentWrapper>
+        <MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />
+        <TableOfContents toc={tableOfContents} />
+      </PostContentWrapper>
+    </PostWrapper>
+  )
 }
 
 export default PostContent
