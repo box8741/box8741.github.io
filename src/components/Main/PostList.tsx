@@ -11,12 +11,12 @@ type PostListProps = {
 }
 
 const PostListWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
   width: 768px;
   margin: 0 auto;
-  padding: 50px 0 100px;
+  padding: 50px 0;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  margin-bottom: 80px;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -25,11 +25,18 @@ const PostListWrapper = styled.div`
   }
 `
 
+const PostCount = styled.div`
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 16px 12px;
+`
+
 const PostList: FunctionComponent<PostListProps> = ({ selectedCategory, posts }) => {
   const { containerRef, postList }: useInfiniteScrollType = useInfiniteScroll(selectedCategory, posts)
 
   return (
     <PostListWrapper ref={containerRef}>
+      <PostCount>Posts {postList.length}</PostCount>
       {postList.map(
         ({
           node: {

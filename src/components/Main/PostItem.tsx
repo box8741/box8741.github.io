@@ -9,21 +9,28 @@ type PostItemProps = PostFrontmatterType & { link: string }
 
 const PostItemWrapper = styled(Link)`
   display: flex;
-  flex-direction: column;
   border-radius: 10px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
-  transition: 0.3s box-shadow;
+  transition: box-shadow 0.3s, transform 0.3s;
   cursor: pointer;
+  margin-bottom: 24px;
 
+  &:last-of-type {
+    margin-bottom: 0;
+  }
   &:hover {
-    box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.03);
   }
 `
 
 const ThumbnailImage = styled(GatsbyImage)`
-  width: 100%;
-  height: 200px;
-  border-radius: 10px 10px 0 0;
+  width: 220px;
+  border-radius: 10px 0 0 10px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 const PostItemContent = styled.div`
