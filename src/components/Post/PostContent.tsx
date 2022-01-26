@@ -10,12 +10,20 @@ interface PostContentProps {
 const PostWrapper = styled.div`
   width: 768px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const PostContentWrapper = styled.div`
   display: grid;
   grid-template-columns: 768px 250px;
   margin: 160px 0;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 const MarkdownRenderer = styled.div`
