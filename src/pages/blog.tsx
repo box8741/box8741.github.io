@@ -5,6 +5,7 @@ import queryString, { ParsedQuery } from 'query-string'
 import Layout from 'components/Common/Layout'
 import CategoryList, { CategoryListProps } from 'components/Main/CategoryList'
 import PostList from 'components/Main/PostList'
+import Title from 'components/Common/Title'
 
 import { PostListItemType } from 'types/PostItem.types'
 
@@ -65,6 +66,7 @@ const BlogPage: FunctionComponent<BlogPageProps> = ({
 
   return (
     <Layout {...PAGE_METADATA} url={href} image={publicURL}>
+      <Title>Blog</Title>
       <CategoryList selectedCategory={selectedCategory} categoryList={categoryList} />
       <PostList selectedCategory={selectedCategory} posts={edges} />
     </Layout>

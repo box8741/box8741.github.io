@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
-import Title from 'components/Common/Title'
+import Logo from 'components/Common/Logo'
 
 const HeaderWrapper = styled.header`
   width: 768px;
@@ -42,7 +42,7 @@ const ListItem = styled(Link)`
 const Header = () => {
   return (
     <HeaderWrapper>
-      <Title>Developer Min</Title>
+      <Logo>Developer Min</Logo>
       <List>
         <ListItem to="/" activeClassName="active">
           Home

@@ -23,6 +23,7 @@ const PostContentWrapper = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    margin: 40px 0;
   }
 `
 
