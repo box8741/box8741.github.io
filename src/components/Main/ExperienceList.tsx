@@ -1,22 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
-import ExperienceItem from 'components/Main/ExperienceItem'
+import ExperienceItem, { ExperienceItemProps } from 'components/Main/ExperienceItem'
 
-const EXPERIENCE_DATA = [
-  { date: '2022.01 ~ ', title: '블로그 개발 시작' },
-  { date: '2020.04 ~ 2020.11', title: '수포자는 수학을 포기한 사람의 준말입니다.' },
-  { date: '2020.04 ~ 2020.11', title: '1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열' },
-  { date: '2020.04 ~ 2020.11', title: 'return 하도록 solution 함수를 작성해주세요.' },
-  { date: '2020.04 ~ 2020.11', title: 'answers가 주어졌을 때, 가장 많은 문제를 맞힌 사' },
-  { date: '2022.01 ~ ', title: '블로그 개발 시작' },
-  { date: '2020.04 ~ 2020.11', title: '수포자는 수학을 포기한 사람의 준말입니다.' },
-  { date: '2020.04 ~ 2020.11', title: '1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열' },
-  { date: '2020.04 ~ 2020.11', title: 'return 하도록 solution 함수를 작성해주세요.' },
-  { date: '2020.04 ~ 2020.11', title: 'answers가 주어졌을 때, 가장 많은 문제를 맞힌 사' },
-  { date: '2022.01 ~ ', title: '블로그 개발 시작' },
-]
-
-type ExperienceListProps = {}
+type ExperienceListProps = {
+  experienceData: ExperienceItemProps[]
+}
 
 const ExperienceListWrapper = styled.ul`
   width: 768px;
@@ -32,10 +20,10 @@ const ExperienceListWrapper = styled.ul`
   }
 `
 
-const ExperienceList: FunctionComponent<ExperienceListProps> = () => {
+const ExperienceList: FunctionComponent<ExperienceListProps> = ({ experienceData }) => {
   return (
     <ExperienceListWrapper>
-      {EXPERIENCE_DATA.map((data, index) => (
+      {experienceData.map((data, index) => (
         <ExperienceItem key={index} {...data} />
       ))}
     </ExperienceListWrapper>

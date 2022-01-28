@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { graphql, PageProps } from 'gatsby'
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 import Layout from 'components/Common/Layout'
 import Introduction from 'components/Main/Introduction'
 

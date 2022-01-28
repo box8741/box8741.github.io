@@ -32,10 +32,7 @@ const BlogPage: FunctionComponent<BlogPageProps> = ({
   location: { href, search },
   data: {
     allMarkdownRemark: { edges },
-    file: {
-      childImageSharp: { gatsbyImageData },
-      publicURL,
-    },
+    file: { publicURL },
   },
 }) => {
   const parsed: ParsedQuery<string> = queryString.parse(search)
