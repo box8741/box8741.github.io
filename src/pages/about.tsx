@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import Layout from 'components/Common/Layout'
 import Title from 'components/Common/Title'
+import Experience from 'components/Main/Experience'
 
 const PAGE_METADATA = {
   title: 'About',
@@ -25,6 +26,7 @@ const AboutPage: FunctionComponent<AboutPageProps> = ({
   return (
     <Layout {...PAGE_METADATA} url={href} image={publicURL}>
       <Title>About</Title>
+      <Experience />
     </Layout>
   )
 }
