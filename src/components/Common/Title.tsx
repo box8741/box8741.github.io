@@ -21,18 +21,20 @@ const CubeIcon = styled(FontAwesomeIcon)`
   opacity: 0.4;
 
   @media (max-width: 768px) {
+    font-size: 50px;
     width: 40px;
   }
 `
 
 const TitleText = styled.span`
   position: absolute;
-  left: 20px;
+  left: 12px;
   font-size: 80px;
   font-weight: bold;
 
   @media (max-width: 768px) {
     font-size: 60px;
+    left: 32px;
   }
 `
 
