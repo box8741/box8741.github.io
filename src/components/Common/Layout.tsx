@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import { Helmet } from 'react-helmet'
 import GlobalStyle from 'components/Common/GlobalStyle'
 import Header from 'components/Common/Header'
-import Footer from 'components/Common/Footer'
 
 type LayoutProps = {
   title: string

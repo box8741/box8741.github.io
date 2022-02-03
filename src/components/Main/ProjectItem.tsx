@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import ProjectItem from 'components/Main/ProjectItem'
 
 import { ProjectListItemType } from 'types/ProjectItem.types'
 

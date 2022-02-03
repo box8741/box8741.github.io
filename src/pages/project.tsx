@@ -5,7 +5,7 @@ import Title from 'components/Common/Title'
 import SubTitle from 'components/Common/SubTitle'
 import ProjectList from 'components/Main/ProjectList'
 
-import { ProjectListType, ProjectListItemType } from 'types/ProjectItem.types'
+import { ProjectListType } from 'types/ProjectItem.types'
 
 const PAGE_METADATA = {
   title: 'Project',
