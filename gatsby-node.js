@@ -1,5 +1,6 @@
 const path = require('path')
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const projectList = require('./static/ProjectList.json')
 
 exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
   const output = getConfig().output || {}
@@ -21,9 +22,22 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const slug = createFilePath({ node, getNode })
-    createNodeField({ node, name: `slug`, value: slug })
+    createNodeField({ node, name: `slug`, value: `/blog${slug}` })
   }
 }
+
+// exports.sourceNodes = ({ actions: { createNode }, createNodeId, createContentDigest }) => {
+//   projectList.forEach((data, index) => {
+//     createNode({
+//       ...data,
+//       id: createNodeId(`project-${index}`),
+//       internal: {
+//         type: `project`,
+//         contentDigest: createContentDigest(data),
+//       },
+//     })
+//   })
+// }
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions

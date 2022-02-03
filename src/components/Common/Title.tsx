@@ -7,7 +7,7 @@ const TitleWrapper = styled.div`
   display: flex;
   position: relative;
   width: 768px;
-  margin: 90px auto 130px auto;
+  margin: 60px auto 90px auto;
 
   @media (max-width: 768px) {
     width: 100%;

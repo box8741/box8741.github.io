@@ -50,6 +50,9 @@ const Header = () => {
         <ListItem to="/about" activeClassName="active">
           About
         </ListItem>
+        <ListItem to="/project" activeClassName="active">
+          Project
+        </ListItem>
         <ListItem to="/blog" activeClassName="active">
           Blog
         </ListItem>
