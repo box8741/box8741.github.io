@@ -26,17 +26,17 @@ const CareerItemWrapper = styled.div`
 `
 
 const Category = styled.span`
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
 
   @media (max-width: 768px) {
-    font-size: 22px;
+    font-size: 24px;
     margin-bottom: 32px;
   }
 `
 
 const CategoryItem = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 18px;
 
   &:last-of-type {
@@ -44,7 +44,7 @@ const CategoryItem = styled.div`
   }
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 
