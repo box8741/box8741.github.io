@@ -27,8 +27,8 @@ const ProjectListWrapper = styled.div`
 const ProjectList: FunctionComponent<ProjectListProps> = ({ list }) => {
   return (
     <ProjectListWrapper>
-      {list.map((data, index) => (
-        <ProjectItem data={data} key={index} />
+      {list.map(({ node }, index) => (
+        <ProjectItem data={node} key={node.id} index={index} />
       ))}
     </ProjectListWrapper>
   )

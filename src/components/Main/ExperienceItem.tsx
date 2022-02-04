@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 
-type ExperienceItemProps = {
+export type ExperienceItemProps = {
   date: string
   title: string
 }
@@ -14,6 +14,10 @@ const ExperienceItemWrapper = styled.li`
 
   &:last-of-type {
     margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 160px 1fr;
   }
 `
 

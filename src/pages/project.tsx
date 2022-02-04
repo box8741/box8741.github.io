@@ -5,7 +5,7 @@ import Title from 'components/Common/Title'
 import SubTitle from 'components/Common/SubTitle'
 import ProjectList from 'components/Main/ProjectList'
 
-import { ProjectListType } from 'types/ProjectItem.types'
+import { ProjectListItemType } from 'types/ProjectItem.types'
 
 const PAGE_METADATA = {
   title: 'Project',
@@ -14,8 +14,11 @@ const PAGE_METADATA = {
 
 type ProjectPageProps = PageProps & {
   data: {
-    allFile: {
-      edges: ProjectListType[]
+    appList: {
+      edges: ProjectListItemType[]
+    }
+    webList: {
+      edges: ProjectListItemType[]
     }
     file: {
       publicURL: string
@@ -26,58 +29,54 @@ type ProjectPageProps = PageProps & {
 const ProjectPage: FunctionComponent<ProjectPageProps> = ({
   location: { href },
   data: {
-    allFile: { edges },
+    appList,
+    webList,
     file: { publicURL },
   },
 }) => {
-  const {
-    node: {
-      childStaticJson: { app, web },
-    },
-  } = edges[0]
-
   return (
     <Layout {...PAGE_METADATA} image={publicURL} url={href}>
       <Title>Project</Title>
       <SubTitle>App</SubTitle>
-      <ProjectList list={app} />
+      <ProjectList list={appList.edges} />
       <SubTitle>Web</SubTitle>
-      <ProjectList list={web} />
+      <ProjectList list={webList.edges} />
     </Layout>
   )
 }
 
 export default ProjectPage
 
+// thumbnail {
+//   childImageSharp {
+//     gatsbyImageData(width: 300, height: 200, transformOptions: { fit: OUTSIDE })
+//   }
+// }
+
 export const getProjectData = graphql`
+  fragment ProjectData on ProjectMetaData {
+    id
+    type
+    title
+    content
+    period
+    description
+    thumbnail
+  }
+
   query getProjectData {
-    allFile(filter: { name: { eq: "ProjectList" } }) {
+    appList: allProjectMetaData(filter: { type: { eq: "app" } }) {
       edges {
         node {
-          childStaticJson {
-            app {
-              title
-              content
-              period
-              description
-              thumbnail {
-                childImageSharp {
-                  gatsbyImageData(width: 300, height: 200, transformOptions: { fit: OUTSIDE })
-                }
-              }
-            }
-            web {
-              title
-              content
-              period
-              description
-              thumbnail {
-                childImageSharp {
-                  gatsbyImageData(width: 300, height: 200, transformOptions: { fit: OUTSIDE })
-                }
-              }
-            }
-          }
+          ...ProjectData
+        }
+      }
+    }
+
+    webList: allProjectMetaData(filter: { type: { eq: "web" } }) {
+      edges {
+        node {
+          ...ProjectData
         }
       }
     }

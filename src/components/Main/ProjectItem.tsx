@@ -1,11 +1,13 @@
 import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { Link } from 'gatsby'
 
 import { ProjectListItemType } from 'types/ProjectItem.types'
 
 type ProjectListProps = {
-  data: ProjectListItemType
+  data: ProjectListItemType['node']
+  index: number
 }
 
 const ThumbnailWrapper = styled.div`
@@ -43,7 +45,7 @@ const Description = styled.span`
   transition: 0.2s ease;
 `
 
-const ProjectListItemWrapper = styled.div`
+const ProjectListItemWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -56,20 +58,12 @@ const ProjectListItemWrapper = styled.div`
   }
 `
 
-const ProjectList: FunctionComponent<ProjectListProps> = ({
-  data: {
-    title,
-    thumbnail: {
-      childImageSharp: { gatsbyImageData },
-    },
-    description,
-  },
-}) => {
+const ProjectList: FunctionComponent<ProjectListProps> = ({ data: { type, title, description }, index }) => {
   return (
-    <ProjectListItemWrapper>
-      <ThumbnailWrapper>
+    <ProjectListItemWrapper to={`/project/${type}_${index}`}>
+      {/* <ThumbnailWrapper>
         <Thumbnail image={gatsbyImageData} alt="thumbnail" />
-      </ThumbnailWrapper>
+      </ThumbnailWrapper> */}
       <Title>{title}</Title>
       <Description>{description}</Description>
     </ProjectListItemWrapper>
