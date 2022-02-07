@@ -8,11 +8,8 @@ export type ProjectListItemType = {
     description: string
     period: string
     content: string
-    // thumbnail: {
-    //   childImageSharp: {
-    //     gatsbyImageData: IGatsbyImageData
-    //   }
-    // }
-    thumbnail: string
+    thumbnail: {
+      gatsbyImageData: IGatsbyImageData
+    }
   }
 }

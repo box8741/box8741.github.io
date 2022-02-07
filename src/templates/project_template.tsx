@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { ProjectListItemType } from 'types/ProjectItem.types'
 
@@ -11,7 +12,13 @@ type ProjectTemplateProps = {
 
 const ProjectTemplate: FunctionComponent<ProjectTemplateProps> = ({
   data: {
-    projectMetaData: { title, content, period },
+    projectMetaData: {
+      title,
+      content,
+      period,
+      description,
+      thumbnail: { gatsbyImageData },
+    },
   },
 }) => {
   return (
@@ -19,6 +26,8 @@ const ProjectTemplate: FunctionComponent<ProjectTemplateProps> = ({
       <div>{title}</div>
       <div>{content}</div>
       <div>{period}</div>
+      <div>{description}</div>
+      <GatsbyImage image={gatsbyImageData} alt="thumbnail" />
     </div>
   )
 }
@@ -29,10 +38,12 @@ export const getTempProjectData = graphql`
   query getTempProjectData($projectId: String) {
     projectMetaData(id: { eq: $projectId }) {
       title
-      thumbnail
       content
       period
       description
+      thumbnail {
+        gatsbyImageData(width: 768, height: 400, transformOptions: { fit: OUTSIDE })
+      }
     }
   }
 `

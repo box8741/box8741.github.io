@@ -58,12 +58,20 @@ const ProjectListItemWrapper = styled(Link)`
   }
 `
 
-const ProjectList: FunctionComponent<ProjectListProps> = ({ data: { type, title, description }, index }) => {
+const ProjectList: FunctionComponent<ProjectListProps> = ({
+  data: {
+    type,
+    title,
+    description,
+    thumbnail: { gatsbyImageData },
+  },
+  index,
+}) => {
   return (
     <ProjectListItemWrapper to={`/project/${type}_${index}`}>
-      {/* <ThumbnailWrapper>
+      <ThumbnailWrapper>
         <Thumbnail image={gatsbyImageData} alt="thumbnail" />
-      </ThumbnailWrapper> */}
+      </ThumbnailWrapper>
       <Title>{title}</Title>
       <Description>{description}</Description>
     </ProjectListItemWrapper>

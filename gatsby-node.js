@@ -26,7 +26,40 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
-exports.sourceNodes = ({ actions: { createNode }, createNodeId, createContentDigest }) => {
+exports.createSchemaCustomization = ({ actions, schema }) => {
+  const { createTypes } = actions
+
+  const typeDefs = [
+    schema.buildObjectType({
+      name: 'ProjectMetaData',
+      fields: {
+        thumbnail: {
+          type: 'ImageSharp',
+          resolve: async (source, args, context, info) => {
+            const imageNode = await context.nodeModel.findOne({
+              type: 'ImageSharp',
+              query: {
+                filter: {
+                  fluid: {
+                    originalName: { eq: source.thumbnail },
+                  },
+                },
+              },
+            })
+
+            return imageNode
+          },
+        },
+      },
+      interfaces: ['Node'],
+      extensions: { infer: true },
+    }),
+  ]
+
+  createTypes(typeDefs)
+}
+
+exports.sourceNodes = async ({ actions: { createNode }, createNodeId, createContentDigest }) => {
   const generateProjectNode = type => {
     ProjectList[type].forEach((projectItem, index) => {
       createNode({

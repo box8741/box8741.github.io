@@ -47,12 +47,6 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
 
 export default ProjectPage
 
-// thumbnail {
-//   childImageSharp {
-//     gatsbyImageData(width: 300, height: 200, transformOptions: { fit: OUTSIDE })
-//   }
-// }
-
 export const getProjectData = graphql`
   fragment ProjectData on ProjectMetaData {
     id
@@ -61,7 +55,9 @@ export const getProjectData = graphql`
     content
     period
     description
-    thumbnail
+    thumbnail {
+      gatsbyImageData(width: 300, height: 200, transformOptions: { fit: OUTSIDE })
+    }
   }
 
   query getProjectData {
