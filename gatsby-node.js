@@ -50,6 +50,27 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             return imageNode
           },
         },
+        extraImage: {
+          type: '[ImageSharp]',
+          resolve: async (source, args, context, info) => {
+            const imageNodeArray = await Promise.all(
+              source.extraImage.map(async fileName => {
+                const imageNode = await context.nodeModel.findOne({
+                  type: 'ImageSharp',
+                  query: {
+                    filter: {
+                      fluid: {
+                        originalName: { eq: fileName },
+                      },
+                    },
+                  },
+                })
+                return imageNode
+              }),
+            )
+            return imageNodeArray
+          },
+        },
       },
       interfaces: ['Node'],
       extensions: { infer: true },

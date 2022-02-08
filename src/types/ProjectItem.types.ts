@@ -5,11 +5,13 @@ export type ProjectListItemType = {
     id: string
     type: string
     title: string
+    skill: string[]
     description: string
     period: string
     content: string
     thumbnail: {
       gatsbyImageData: IGatsbyImageData
     }
+    extraImage: [{ gatsbyImageData: IGatsbyImageData }]
   }
 }

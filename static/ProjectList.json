@@ -2,41 +2,51 @@
   "app": [
     {
       "title": "pagea",
+      "skill": ["React", "React-Native"],
       "description": "설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명",
       "content": "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용",
       "thumbnail": "sample-image.jpg",
-      "period": "2020.08 ~ 2020.99"
+      "period": "2020.08 ~ 2020.09",
+      "extraImage": ["test.jpg", "sample-image.jpg"]
     },
     {
       "title": "pageb",
+      "skill": ["React", "React-Native"],
       "description": "설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명",
       "content": "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용",
       "thumbnail": "sample-image.jpg",
-      "period": "2020.08 ~ 2020.09"
+      "period": "2020.08 ~ 2020.09",
+      "extraImage": ["sample-image.jpg", "sample-image.jpg", "sample-image.jpg", "sample-image.jpg"]
     },
     {
       "title": "pagec",
+      "skill": ["React", "React-Native"],
       "description": "설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명",
       "content": "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용",
       "thumbnail": "sample-image.jpg",
-      "period": "2020.08 ~ 2020.09"
+      "period": "2020.08 ~ 2020.09",
+      "extraImage": ["sample-image.jpg", "sample-image.jpg"]
     },
     {
       "title": "paged",
+      "skill": ["React", "React-Native"],
       "description": "설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명",
       "content": "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용",
       "thumbnail": "sample-image.jpg",
-      "period": "2020.08 ~ 2020.10"
+      "period": "2020.08 ~ 2020.10",
+      "extraImage": ["sample-image.jpg", "sample-image.jpg", "sample-image.jpg"]
     }
   ],
 
   "web": [
     {
       "title": "제목입니다11",
+      "skill": ["React", "React-Native"],
       "description": "설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명",
       "content": "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용",
       "thumbnail": "sample-image.jpg",
-      "period": "2020.08 ~ 2020.09"
+      "period": "2020.08 ~ 2020.09",
+      "extraImage": ["sample-image.jpg", "sample-image.jpg"]
     }
   ]
 }

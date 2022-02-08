@@ -1,34 +1,39 @@
 import React, { FunctionComponent } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import Layout from 'components/Common/Layout'
+import ProjectHead from 'components/Project/ProjectHead'
+import ProjectInfo from 'components/Project/ProjectInfo'
 
 import { ProjectListItemType } from 'types/ProjectItem.types'
 
-type ProjectTemplateProps = {
+type ProjectTemplateProps = PageProps & {
   data: {
     projectMetaData: ProjectListItemType['node']
   }
 }
 
 const ProjectTemplate: FunctionComponent<ProjectTemplateProps> = ({
+  location: { href },
   data: {
     projectMetaData: {
       title,
+      skill,
       content,
       period,
       description,
       thumbnail: { gatsbyImageData },
+      extraImage,
     },
   },
 }) => {
   return (
-    <div>
-      <div>{title}</div>
-      <div>{content}</div>
-      <div>{period}</div>
-      <div>{description}</div>
-      <GatsbyImage image={gatsbyImageData} alt="thumbnail" />
-    </div>
+    <Layout title={title} description={description} image={gatsbyImageData.images.fallback?.src} url={href}>
+      <ProjectHead gatsbyImageData={gatsbyImageData} />
+      {/* <div>{skill[0]}</div> */}
+      <ProjectInfo title={title} period={period} description={description} content={content} />
+      {/* <GatsbyImage image={extraImage[0].gatsbyImageData} alt="dwqdqdwq" /> */}
+    </Layout>
   )
 }
 
@@ -38,11 +43,15 @@ export const getTempProjectData = graphql`
   query getTempProjectData($projectId: String) {
     projectMetaData(id: { eq: $projectId }) {
       title
+      skill
       content
       period
       description
       thumbnail {
-        gatsbyImageData(width: 768, height: 400, transformOptions: { fit: OUTSIDE })
+        gatsbyImageData(width: 768)
+      }
+      extraImage {
+        gatsbyImageData(width: 300)
       }
     }
   }
