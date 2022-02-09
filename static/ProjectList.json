@@ -7,7 +7,7 @@
       "content": "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용",
       "thumbnail": "sample-image.jpg",
       "period": "2020.08 ~ 2020.09",
-      "extraImage": ["test.jpg", "sample-image.jpg"]
+      "extraImage": ["sample-image.jpg", "sample-image.jpg"]
     },
     {
       "title": "pageb",

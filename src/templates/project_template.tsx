@@ -30,9 +30,14 @@ const ProjectTemplate: FunctionComponent<ProjectTemplateProps> = ({
   return (
     <Layout title={title} description={description} image={gatsbyImageData.images.fallback?.src} url={href}>
       <ProjectHead gatsbyImageData={gatsbyImageData} />
-      {/* <div>{skill[0]}</div> */}
-      <ProjectInfo title={title} period={period} description={description} content={content} />
-      {/* <GatsbyImage image={extraImage[0].gatsbyImageData} alt="dwqdqdwq" /> */}
+      <ProjectInfo
+        title={title}
+        skill={skill}
+        period={period}
+        description={description}
+        content={content}
+        extraImage={extraImage}
+      />
     </Layout>
   )
 }
@@ -51,7 +56,7 @@ export const getTempProjectData = graphql`
         gatsbyImageData(width: 768)
       }
       extraImage {
-        gatsbyImageData(width: 300)
+        gatsbyImageData(width: 375)
       }
     }
   }
