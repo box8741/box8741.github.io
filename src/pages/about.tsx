@@ -7,8 +7,8 @@ import ExperienceList from 'components/Main/ExperienceList'
 import CareerList from 'components/Main/CareerList'
 
 const PAGE_METADATA = {
-  title: 'About',
-  description: '나의 대해',
+  title: 'Developer Min | About',
+  description: '성장과정',
 }
 
 type AboutPageProps = PageProps & {

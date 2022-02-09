@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Developer Min`,
-    description: `삽질 블로그`,
+    description: `개발자들 사이에서 한 번쯤 들어봤을 만한 사람이 되기위해`,
     author: `Min`,
     siteUrl: `https://box8741.github.io`,
   },

@@ -10,8 +10,8 @@ import Title from 'components/Common/Title'
 import { PostListItemType } from 'types/PostItem.types'
 
 const PAGE_METADATA = {
-  title: 'Blog',
-  description: '삽질 블로그',
+  title: 'Developer Min | Blog',
+  description: '개발 블로그',
 }
 
 type BlogPageProps = PageProps & {

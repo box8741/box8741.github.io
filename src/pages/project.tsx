@@ -8,8 +8,8 @@ import ProjectList from 'components/Main/ProjectList'
 import { ProjectListItemType } from 'types/ProjectItem.types'
 
 const PAGE_METADATA = {
-  title: 'Project',
-  description: '프로젝트',
+  title: 'Developer Min | Project',
+  description: '포트폴리오',
 }
 
 type ProjectPageProps = PageProps & {

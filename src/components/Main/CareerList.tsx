@@ -7,7 +7,7 @@ type CareerListProps = {}
 const CAREER_LIST = [
   {
     title: 'Skill',
-    contents: ['TypeScript, JavaScript, React, React-Native, Redux, Electron,HTML/CSS', 'Android, Java'],
+    contents: ['TypeScript, JavaScript, React, React-Native, Redux, Electron, HTML/CSS', 'Android, Java'],
   },
   {
     title: 'Education',
