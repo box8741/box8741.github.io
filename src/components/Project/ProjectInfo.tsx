@@ -75,14 +75,14 @@ const Period = styled.div`
 const Description = styled.div`
   font-size: 16px;
   margin-top: 24px;
-  word-break: break-word;
+  word-break: keep-all;
   line-height: 1.6;
 `
 
 const Content = styled.div`
   font-size: 16px;
   margin-top: 40px;
-  word-break: break-word;
+  word-break: keep-all;
   line-height: 1.6;
 `
 

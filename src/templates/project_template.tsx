@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import { graphql, PageProps } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import Layout from 'components/Common/Layout'
 import ProjectHead from 'components/Project/ProjectHead'
 import ProjectInfo from 'components/Project/ProjectInfo'
