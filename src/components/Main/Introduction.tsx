@@ -8,28 +8,14 @@ type IntroductionProps = {
 }
 
 const IntroductionWrapper = styled.div`
-  min-height: calc(100vh - 80px);
-  width: 100%;
   display: flex;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    min-height: calc(100vh - 60px);
-  }
-`
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 768px;
-  height: 400px;
-  margin: 0 auto;
+  margin: 80px auto;
 
   @media (max-width: 768px) {
+    flex-direction: column;
     width: 100%;
-    height: 300px;
     padding: 0 20px;
   }
 `
@@ -37,6 +23,7 @@ const Wrapper = styled.div`
 const SubTitle = styled.div`
   font-size: 20px;
   font-weight: 400;
+  word-break: keep-all;
 
   @media (max-width: 768px) {
     font-size: 15px;
@@ -47,6 +34,7 @@ const Title = styled.div`
   margin-top: 5px;
   font-size: 35px;
   font-weight: 700;
+  word-break: keep-all;
 
   @media (max-width: 768px) {
     font-size: 25px;
@@ -56,13 +44,11 @@ const Title = styled.div`
 const Introduction: FunctionComponent<IntroductionProps> = ({ profileImage }) => {
   return (
     <IntroductionWrapper>
-      <Wrapper>
-        <ProfileImage profileImage={profileImage} />
-        <div>
-          <Title>안녕하세요 개발자 박민국 입니다.</Title>
-          <SubTitle>개발자들 사이에서 한 번쯤 들어봤을 만한 사람이 되는 게 꿈입니다.</SubTitle>
-        </div>
-      </Wrapper>
+      <ProfileImage profileImage={profileImage} />
+      <div>
+        <Title>안녕하세요 개발자 박민국 입니다.</Title>
+        <SubTitle>개발자들 사이에서 한 번쯤 들어봤을 만한 사람이 되는 게 목표입니다.</SubTitle>
+      </div>
     </IntroductionWrapper>
   )
 }

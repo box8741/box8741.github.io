@@ -47,9 +47,6 @@ const Header = () => {
         <ListItem to="/" activeClassName="active">
           Home
         </ListItem>
-        <ListItem to="/about" activeClassName="active">
-          About
-        </ListItem>
         <ListItem to="/project" activeClassName="active">
           Project
         </ListItem>
