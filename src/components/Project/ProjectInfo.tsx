@@ -17,16 +17,31 @@ const ProjectInfoWrapper = styled.div`
   grid-gap: 24px;
   width: 768px;
   margin: 0 auto 80px auto;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-row-gap: 24px;
+    padding: 0 20px;
+  }
 `
 
 const ProjectInfoContent = styled.div`
   margin: 60px 0;
+
+  @media (max-width: 768px) {
+    margin: 40px 0;
+  }
 `
 
 const Title = styled.div`
   font-size: 36px;
   font-weight: bold;
   margin-top: 36px;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
 `
 
 const Skill = styled.span`
@@ -41,12 +56,20 @@ const Skill = styled.span`
   &:last-of-type {
     margin-right: 0;
   }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `
 
 const Period = styled.div`
   font-size: 18px;
   color: #999999;
   margin-top: 6px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `
 
 const Description = styled.div`
