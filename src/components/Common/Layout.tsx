@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { Helmet } from 'react-helmet'
 import GlobalStyle from 'components/Common/GlobalStyle'
 import Header from 'components/Common/Header'
+import Footer from 'components/Common/Footer'
 
 type LayoutProps = {
   title: string
@@ -12,15 +13,15 @@ type LayoutProps = {
   children: ReactNode
 }
 
-const Container = styled.main`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+const Content = styled.div`
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 `
 
 const Layout: FunctionComponent<LayoutProps> = ({ title, description, url, image, children }) => {
   return (
-    <Container>
+    <Content>
       <Helmet>
         <title>{title}</title>
 
@@ -46,9 +47,9 @@ const Layout: FunctionComponent<LayoutProps> = ({ title, description, url, image
       </Helmet>
       <GlobalStyle />
       <Header />
-      {children}
-      {/* <Footer /> */}
-    </Container>
+      <main>{children}</main>
+      <Footer />
+    </Content>
   )
 }
 

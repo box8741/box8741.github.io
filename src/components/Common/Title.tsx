@@ -1,13 +1,10 @@
 import { FunctionComponent } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCube } from '@fortawesome/free-solid-svg-icons'
 import styled from '@emotion/styled'
 
 const TitleWrapper = styled.div`
   display: flex;
-  position: relative;
   width: 768px;
-  margin: 60px auto 90px auto;
+  margin: 60px auto 40px auto;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -16,18 +13,7 @@ const TitleWrapper = styled.div`
   }
 `
 
-const CubeIcon = styled(FontAwesomeIcon)`
-  font-size: 60px;
-  opacity: 0.4;
-
-  @media (max-width: 768px) {
-    font-size: 50px;
-    width: 40px;
-  }
-`
-
 const TitleText = styled.span`
-  position: absolute;
   left: 12px;
   font-size: 80px;
   font-weight: bold;
@@ -41,7 +27,6 @@ const TitleText = styled.span`
 const Title: FunctionComponent = ({ children }) => {
   return (
     <TitleWrapper>
-      <CubeIcon icon={faCube} />
       <TitleText>{children}</TitleText>
     </TitleWrapper>
   )
