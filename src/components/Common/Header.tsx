@@ -51,9 +51,6 @@ const ListItem = styled(Link)`
     color: white;
     opacity: 0.7;
   }
-  &.active {
-    font-weight: 800;
-  }
 `
 
 const Header = () => {
@@ -62,15 +59,9 @@ const Header = () => {
       <HeaderContent>
         <Logo>Developer Min</Logo>
         <List>
-          <ListItem to="/" activeClassName="active">
-            Home
-          </ListItem>
-          <ListItem to="/project" activeClassName="active">
-            Project
-          </ListItem>
-          <ListItem to="/blog" activeClassName="active">
-            Blog
-          </ListItem>
+          <ListItem to="/">Home</ListItem>
+          <ListItem to="/project">Project</ListItem>
+          <ListItem to="/blog">Blog</ListItem>
         </List>
       </HeaderContent>
     </HeaderWrapper>

@@ -13,6 +13,8 @@ type ProjectListProps = {
 const ThumbnailWrapper = styled.div`
   width: 100%;
   height: 200px;
+  box-shadow: 2px 2px 8px #888888;
+  border-radius: 6px;
   overflow: hidden;
 `
 
