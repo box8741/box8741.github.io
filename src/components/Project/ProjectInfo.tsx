@@ -86,6 +86,11 @@ const Content = styled.div`
   line-height: 1.6;
 `
 
+const ExtraImageWrapper = styled.div`
+  display: grid;
+  place-items: center;
+`
+
 const ExtraImage = styled(GatsbyImage)`
   border-radius: 8px;
   box-shadow: 2px 2px 12px #888888;
@@ -110,9 +115,10 @@ const ProjectInfo: FunctionComponent<ProjectInfoProps> = ({
         <Description>{description}</Description>
         <Content>{content}</Content>
       </ProjectInfoContent>
-      <div />
       {extraImage.map(item => (
-        <ExtraImage image={item.gatsbyImageData} alt={'extra img'} />
+        <ExtraImageWrapper>
+          <ExtraImage image={item.gatsbyImageData} alt={'extra img'} />
+        </ExtraImageWrapper>
       ))}
     </ProjectInfoWrapper>
   )

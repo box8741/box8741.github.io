@@ -55,7 +55,7 @@ export const getTempProjectData = graphql`
         gatsbyImageData(width: 768)
       }
       extraImage {
-        gatsbyImageData(width: 375)
+        gatsbyImageData
       }
     }
   }

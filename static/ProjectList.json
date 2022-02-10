@@ -28,7 +28,16 @@
       "content": "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용",
       "thumbnail": "sample-image.jpg",
       "period": "2022.01 ~ 2022.02",
-      "extraImage": ["sample-image.jpg", "sample-image.jpg"]
+      "extraImage": ["sample-image.jpg", "sample-image.jpg", "sample-image.jpg"]
+    },
+    {
+      "title": "스탠다드 패스",
+      "skill": ["React-Native"],
+      "description": "스탠다드 패스는 '유저', '병원' 총 2개로 이루어진 코로나 검사 애플리케이션입니다",
+      "content": "유저 애플리케이션의 사용자 정보를 담고 있는 QR 코드와 특정 키트를 이용해 병원 애플리케이션에서 유저 정보를 기록해둔 후 검사 결과가 나오면 유저 앱에 보내주는 방식입니다. 유저는 검사 결과를 이용해 식당 같은 곳에서 '카카오톡 코로나 QRcode' 또는 '네이버 코로나 QRcode' 처럼 사용할 수 있습니다. 자가 진단 키트가 있다면 유저 앱을 통한 코로나 자가 진단도 가능합니다.",
+      "thumbnail": "standard-pass-main.png",
+      "period": "2020.12 ~ 2021.04",
+      "extraImage": ["standard-pass-1.jpg", "standard-pass-2.jpg", "standard-pass-3.jpg", "standard-pass-4.jpg"]
     }
   ]
 }
