@@ -53,6 +53,9 @@ const Layout: FunctionComponent<LayoutProps> = ({ children, ...args }) => {
         <meta name="twitter:site" content="@Min" />
         <meta name="twitter:creator" content="@Min" />
 
+        <meta name="google-site-verification" content="ZmiMQRLe6kmsVx-jccgpxXcGHOhZTzQ_mAJ9Kb7zNUI" />
+        <meta name="naver-site-verification" content="19f7ee702bcdcf8425e0485d876461ee8b337991" />
+
         <html lang="ko" />
       </Helmet>
       <GlobalStyle />
