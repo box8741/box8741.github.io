@@ -9,7 +9,7 @@ const TitleWrapper = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     padding: 0 20px;
-    margin: 60px auto 60px auto;
+    margin: 40px auto 20px auto;
   }
 `
 

@@ -19,11 +19,14 @@ const ExperienceItemWrapper = styled.li`
   @media (max-width: 768px) {
     grid-template-columns: 160px 1fr;
   }
+  @media (max-width: 460px) {
+    grid-template-columns: 80px 1fr;
+  }
 `
 
 const Date = styled.span`
   font-size: 18px;
-  color: #999999;
+  color: #888888;
 
   @media (max-width: 768px) {
     font-size: 16px;

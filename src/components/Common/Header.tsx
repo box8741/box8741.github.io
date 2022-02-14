@@ -29,7 +29,7 @@ const HeaderContent = styled.div`
   }
 `
 
-const List = styled.ul`
+const List = styled.div`
   display: flex;
 
   @media (max-width: 768px) {

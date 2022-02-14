@@ -36,7 +36,7 @@ const Footer: FunctionComponent = () => {
     <FooterWrapper>
       <FooterContent>
         <Copyright>Copyright 2022. Developer Min</Copyright>
-        <Link target={'_blank'} to="https://github.com/box8741">
+        <Link target={'_blank'} to="https://github.com/box8741" aria-label="github link">
           <GithubIcon />
         </Link>
       </FooterContent>
