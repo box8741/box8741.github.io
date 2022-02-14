@@ -2,13 +2,14 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import styled from '@emotion/styled'
 import { Helmet } from 'react-helmet'
 import GlobalStyle from 'components/Common/GlobalStyle'
+import { useSiteMetadata } from 'hooks/useSiteMetadata'
 import Header from 'components/Common/Header'
 import Footer from 'components/Common/Footer'
 
 type LayoutProps = {
-  title: string
-  description: string
-  url: string
+  title?: string
+  description?: string
+  url?: string
   image?: string
   children: ReactNode
 }
@@ -18,8 +19,17 @@ const Content = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
 `
+// title, description, url, image, children
+const Layout: FunctionComponent<LayoutProps> = ({ children, ...args }) => {
+  const siteMetadata = useSiteMetadata()
 
-const Layout: FunctionComponent<LayoutProps> = ({ title, description, url, image, children }) => {
+  const { title, description, url, image } = {
+    title: args?.title || siteMetadata.title,
+    description: args?.description || siteMetadata.description,
+    url: args?.url || siteMetadata.siteUrl,
+    image: args?.image || undefined,
+  }
+
   return (
     <Content>
       <Helmet>
