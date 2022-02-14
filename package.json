@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "min-blog",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Blog",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Park Min Kuk <box8741@gmail.com>",
   "dependencies": {
     "@emotion-icons/bootstrap": "^3.27.0",
     "@emotion/react": "^11.7.1",
@@ -43,6 +43,7 @@
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "gh-pages": "^3.2.3",
     "prettier": "^2.5.1",
     "typescript": "^4.5.4"
   },
@@ -57,7 +58,8 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "deploy": "gatsby build && gh-pages -d public -b master"
   },
   "repository": {
     "type": "git",
