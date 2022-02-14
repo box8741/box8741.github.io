@@ -10,8 +10,14 @@ const NotFoundPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  width: 768px;
+  margin: 0 auto;
   height: 100%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 20px;
+  }
 `
 
 const NotFoundText = styled.div`
@@ -23,37 +29,30 @@ const NotFoundText = styled.div`
   }
 `
 
+const NotFoundTitle = styled.div`
+  font-size: 50px;
+
+  @media (max-width: 768px) {
+    font-size: 30px;
+  }
+`
+
 const NotFoundDescription = styled.div`
   font-size: 25px;
-  text-align: center;
-  line-height: 1.3;
 
   @media (max-width: 768px) {
     font-size: 20px;
   }
 `
 
-const GoToMainButton = styled(Link)`
-  margin-top: 30px;
-  font-size: 20px;
-  text-decoration: underline;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`
-
 const NotFoundPage: FunctionComponent<NotFoundPageProps> = () => {
   return (
     <Layout>
+      <GlobalStyle />
       <NotFoundPageWrapper>
-        <GlobalStyle />
         <NotFoundText>404</NotFoundText>
-        <NotFoundDescription>
-          찾을 수 없는 페이지입니다. <br />
-          다른 콘텐츠를 보러 가보시겠어요?
-        </NotFoundDescription>
-        <GoToMainButton to="/">메인으로</GoToMainButton>
+        <NotFoundTitle>페이지를 찾을 수 없습니다.</NotFoundTitle>
+        <NotFoundDescription>올바른 URL을 입력했는지 확인해주세요.</NotFoundDescription>
       </NotFoundPageWrapper>
     </Layout>
   )
