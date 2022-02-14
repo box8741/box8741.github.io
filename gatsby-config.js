@@ -3,7 +3,7 @@ module.exports = {
     title: `Developer Min`,
     description: `개발자들 사이에서 한 번쯤 들어봤을 만한 사람이 되기위해`,
     author: `Min`,
-    siteUrl: `https://box8741.github.io/`,
+    siteUrl: `https://box8741.github.io`,
   },
   plugins: [
     {
@@ -16,7 +16,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://box8741.github.io/',
+        siteUrl: 'https://box8741.github.io',
         stripQueryString: true,
       },
     },

@@ -46,6 +46,7 @@ const TOCContent = styled.div<{ activeId: string }>`
 
 const TableOfContents: FunctionComponent<TOCProps> = ({ toc }) => {
   const targetedIds = useMemo(() => {
+    if (typeof document === 'undefined') return []
     const dummyDOM = document.createElement('html')
     dummyDOM.innerHTML = toc
     const justAnchors = dummyDOM.querySelectorAll(`a`)

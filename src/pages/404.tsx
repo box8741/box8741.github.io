@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
-import { Link, PageProps } from 'gatsby'
+import { PageProps } from 'gatsby'
 import Layout from 'components/Common/Layout'
 import GlobalStyle from 'components/Common/GlobalStyle'
 
