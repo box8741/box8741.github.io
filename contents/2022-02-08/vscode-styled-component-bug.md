@@ -16,9 +16,7 @@ thumbnail: './vscode-styled-component-bug.png'
 
 # 해결 방안 찾기
 
-https://github.com/styled-components/vscode-styled-components/issues/347
-
-나와 같은 문제가 발생한 사람을 보고 글을 읽어봤지만
+나와 같은 문제가 발생한 여러 글을 읽어봤지만
 
 해결 방법은 VSC 버전이 최신 버전이 아니라는 말이었고 나 같은 경우에는 이미 최신 버전이였기에 다른 방법을 찾아볼 수밖에 없었다.
 
@@ -27,11 +25,9 @@ https://github.com/styled-components/vscode-styled-components/issues/347
 
 # 해결방법
 
-### VSC 자동 업데이트 끄기
+먼저 VSC 다운그레이드를 할 경우 자동 업데이트되는 것을 방지하기 위해 아래와 같이 변경해 줍니다.
 
-(파일 > 기본 설정 > 설정) 들어가서 자동 업데이트 여부를 none으로 변경해 줍니다.
-
-다운그레이드 버전을 받을 경우 자동 업데이트되는 것을 방지하기 위함
+(파일 > 기본 설정 > 설정) 들어가서 자동 업데이트 여부를 none으로 변경
 
 ![update img](./vscode-styled-component-bug2.png)
 
@@ -50,3 +46,9 @@ https://code.visualstudio.com/updates
 ![auto complete img](./vscode-styled-component-bug3.png)
 
 ---
+
+## 참고
+
+https://github.com/styled-components/vscode-styled-components/issues/347
+
+https://stackoverflow.com/questions/49346733/how-to-downgrade-vscode
