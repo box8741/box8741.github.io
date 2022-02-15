@@ -62,8 +62,6 @@ useEffect(() => {
 
 # 참고 자료
 
-https://www.gatsbyjs.com/docs/debugging-html-builds/
-
-https://blog.greenroots.info/gatsby-the-window-is-not-defined-error-what-and-how-to-fix-it
-
-https://www.gatsbyjs.com/docs/conceptual/overview-of-the-gatsby-build-process/
+- [Debugging HTML Builds](https://www.gatsbyjs.com/docs/debugging-html-builds/)
+- [Gatsby - the window is not defined error, what and how to fix it?](https://blog.greenroots.info/gatsby-the-window-is-not-defined-error-what-and-how-to-fix-it)
+- [Overview of the Gatsby Build Process](https://www.gatsbyjs.com/docs/conceptual/overview-of-the-gatsby-build-process/)

@@ -49,6 +49,5 @@ https://code.visualstudio.com/updates
 
 # 참고 자료
 
-https://github.com/styled-components/vscode-styled-components/issues/347
-
-https://stackoverflow.com/questions/49346733/how-to-downgrade-vscode
+- [Intellisense not working #347](https://github.com/styled-components/vscode-styled-components/issues/347)
+- [How to downgrade vscode](https://stackoverflow.com/questions/49346733/how-to-downgrade-vscode)
