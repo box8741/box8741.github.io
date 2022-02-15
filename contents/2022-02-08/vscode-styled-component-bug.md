@@ -8,7 +8,7 @@ thumbnail: './vscode-styled-component-bug.png'
 
 안녕하세요 오늘은 vscode-styled-components extension 자동완성 버그 발생 원인과 해결 방안에 대해서 알아보겠습니다.
 
-# 문제발생
+# 문제 발생
 
 어느 날 갑자기 컴퓨터를 켜서 작업하려고 하니 styled-component 자동완성이 안되는 문제가 발생했습니다.
 
@@ -23,7 +23,7 @@ thumbnail: './vscode-styled-component-bug.png'
 하지만 이로 인해 얻을 수 있던 힌트는 VSC 버전과 vscode-styled-components extension의 버전이 맞지 않으면 오작동 할 수 있겠다고 생각했고
 어제까지만 해도 작동했던 것으로 보아 VSC 가 자동 업데이트되면서 문제가 발생한 거 같습니다.
 
-# 해결방법
+# 해결 방법
 
 먼저 VSC 다운그레이드를 할 경우 자동 업데이트되는 것을 방지하기 위해 아래와 같이 변경해 줍니다.
 
