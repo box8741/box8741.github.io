@@ -60,7 +60,7 @@ useEffect(() => {
 
 ---
 
-## 참고
+# 참고 자료
 
 https://www.gatsbyjs.com/docs/debugging-html-builds/
 

@@ -47,7 +47,7 @@ https://code.visualstudio.com/updates
 
 ---
 
-## 참고
+# 참고 자료
 
 https://github.com/styled-components/vscode-styled-components/issues/347
 

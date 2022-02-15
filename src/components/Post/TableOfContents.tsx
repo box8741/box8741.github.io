@@ -25,10 +25,10 @@ const TOCContent = styled.div<{ activeId: string }>`
 
   li {
     list-style: none;
-    margin-bottom: 6px;
-    &:last-of-type {
-      margin-bottom: 0;
-    }
+  }
+
+  p + ul {
+    margin-left: 10px;
   }
 
   a {
