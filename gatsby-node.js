@@ -111,6 +111,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               fields {
                 slug
               }
+              frontmatter {
+                title
+              }
             }
           }
         }
@@ -157,16 +160,24 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   generateProjectPage('app')
   generateProjectPage('web')
 
-  queryAllMarkdownData.data.allMarkdownRemark.edges.forEach(
-    ({
-      node: {
-        fields: { slug },
+  const posts = queryAllMarkdownData.data.allMarkdownRemark.edges
+  posts.forEach(
+    (
+      {
+        node: {
+          fields: { slug },
+        },
       },
-    }) => {
+      index,
+    ) => {
       createPage({
         path: slug,
         component: path.resolve(__dirname, 'src/templates/post_template.tsx'),
-        context: { slug },
+        context: {
+          slug,
+          prev: index === 0 ? null : posts[index - 1].node,
+          next: index === posts.length - 1 ? null : posts[index + 1].node,
+        },
       })
     },
   )
