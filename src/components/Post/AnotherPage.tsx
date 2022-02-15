@@ -20,6 +20,13 @@ const AnotherPageWrapper = styled.div`
   grid-column-gap: 40px;
   width: 768px;
   margin: 0 auto 36px auto;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    grid-column-gap: 0;
+  }
 `
 
 const PostItemWrapper = styled(Link)`
@@ -31,6 +38,13 @@ const PostItemWrapper = styled(Link)`
 
   &:hover {
     box-shadow: 4px 4px 8px #cccccc;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 12px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 `
 

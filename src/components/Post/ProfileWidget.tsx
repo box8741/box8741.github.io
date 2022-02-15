@@ -11,8 +11,10 @@ const ProfileWidgetWrapper = styled.div`
   width: 768px;
   margin: 0 auto 20px auto;
 
-  @media (max-widht: 768px) {
+  @media (max-width: 768px) {
     width: 100%;
+    flex-direction: column;
+    padding: 0 20px;
   }
 `
 
@@ -26,6 +28,10 @@ const Line = styled.span`
   width: 1px;
   background: #cccccc;
   margin: 0 24px 0 12px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 const IntroduceWRapper = styled.div`
