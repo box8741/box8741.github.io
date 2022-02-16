@@ -25,6 +25,7 @@ const BackgroundImage = styled((props: GatsbyImageProps) => (
   height: 400px;
   object-fit: cover;
   filter: brightness(0.25);
+  background: #333333;
 
   @media (max-width: 768px) {
     height: 300px;
