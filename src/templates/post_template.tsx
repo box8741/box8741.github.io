@@ -61,8 +61,6 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
     },
   } = edges[0]
 
-  console.log('pageContext : ', pageContext)
-
   return (
     <Layout title={title} description={summary} url={href} image={publicURL}>
       <PostHead title={title} date={date} categories={categories} thumbnail={gatsbyImageData} />

@@ -105,15 +105,27 @@ const MarkdownRenderer = styled.div`
     text-decoration: underline;
   }
 
+  a > picture {
+    margin: 60px 0;
+  }
+
   pre[class*='language-'] {
     margin: 30px 0;
     padding: 15px;
     font-size: 15px;
+    border-radius: 6px;
 
     ::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.5);
       border-radius: 3px;
     }
+  }
+
+  p:not(pre) > code[class='language-text'] {
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.04);
+    color: #e91e63;
+    padding: 3px 5px;
   }
 
   code[class*='language-'],

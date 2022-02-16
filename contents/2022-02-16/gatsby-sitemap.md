@@ -18,7 +18,7 @@ thumbnail: './gatsby-sitemap.png'
 
 # Gatsby sitemap 라이브러리 세팅
 
-프로젝트 빌드 시 생성되는 페이지에 Sitemap을 추가해 주는 라이브러리를 사용하겠습니다.
+프로젝트 빌드 시 생성되는 페이지에 `Sitemap`을 추가해 주는 라이브러리를 사용하겠습니다.
 
 ```
 npm install gatsby-plugin-sitemap
