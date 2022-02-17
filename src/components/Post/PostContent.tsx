@@ -121,7 +121,8 @@ const MarkdownRenderer = styled.div`
     }
   }
 
-  p:not(pre) > code[class='language-text'] {
+  p:not(pre) > code[class='language-text'],
+  li:not(pre) > code[class='language-text'] {
     font-size: 14px;
     background: rgba(0, 0, 0, 0.04);
     color: #e91e63;

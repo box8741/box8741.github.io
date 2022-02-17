@@ -27,7 +27,7 @@ Gatsby의 같은 경우에는 두 가지의 다른 환경에서 애플리케이�
 ### Build time vs runtime
 
 사용자가 누르고 클릭할 수 있는 상호작용이 가능한 웹 브라우저에서 발생하는 프로세스를 Browser runtime이라고 하는데
-`Javascript` 코드의 경우 브라우저와 상호작용할 수 있고 window.location과 같은 Browser API를 사용할 수 있습니다.
+Javascript 코드의 경우 브라우저와 상호작용할 수 있고 window.location과 같은 Browser API를 사용할 수 있습니다.
 
 반대로 Build time은 서버 프로세스를 사용하여 **웹 사이트를 파일로 컴파일하여 나중에 웹 브라우저로 전달할 수 있도록 하는 과정**을 의미하므로 이때는 window와 같은 Browser API를 사용할 수가 없습니다.
 
