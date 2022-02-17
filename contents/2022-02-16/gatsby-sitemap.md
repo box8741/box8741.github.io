@@ -1,7 +1,7 @@
 ---
 date: '2022-02-16'
 title: 'Gatsby 사이트맵(Sitemap) 적용하기'
-categories: ['Gatsby']
+categories: ['Gatsby', 'Sitemap']
 summary: '사이트맵을 사용하는 이유와 적용 방법에 대해서 알아보자'
 thumbnail: './gatsby-sitemap.png'
 ---
