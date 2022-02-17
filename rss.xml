@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[개발자들 사이에서 한 번쯤 들어봤을 만한 사람이 되기위해]]></description><link>https://box8741.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 17 Feb 2022 05:19:00 GMT</lastBuildDate><item><title><![CDATA[Gatsby 사이트맵(Sitemap) 적용하기]]></title><description><![CDATA[사이트맵을 사용하는 이유와 적용 방법에 대해서 알아보자]]></description><link>https://box8741.github.io/2022-02-16/gatsby-sitemap/</link><guid isPermaLink="false">https://box8741.github.io/2022-02-16/gatsby-sitemap/</guid><pubDate>Wed, 16 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;사이트맵이란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%82%AC%EC%9D%B4%ED%8A%B8%EB%A7%B5%EC%9D%B4%EB%9E%80&quot; aria-label=&quot;사이트맵이란 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;사이트맵이란?&lt;/h1&gt;
+&lt;p&gt;사이트맵이란 사이트에 있는 페이지, 동영상 및 기타 파일등 그 관계에 관한 정보를 제공하는 파일입니다.&lt;/p&gt;
+&lt;p&gt;쉽게 말해 사용자들이 방문할 수 있는 페이지의 목록을 나타낸 것처럼 홈페이지의 설계도와 같은 것입니다.&lt;/p&gt;
+&lt;p&gt;대부분의 여러 검색엔진이 크롤링 할 수 있도록 &lt;code class=&quot;language-text&quot;&gt;Sitemap&lt;/code&gt;을 제출하도록 하고 있습니다.&lt;/p&gt;
+&lt;p&gt;개발자는 내가 사이트에서 중요하다고 생각하는 페이지와 파일을 알리고 중요한 관련 정보를 제공함으로써 더 효율적으로 크롤링이 가능합니다.&lt;/p&gt;
+&lt;h1 id=&quot;gatsby-sitemap-라이브러리-세팅&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gatsby-sitemap-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%B8%ED%8C%85&quot; aria-label=&quot;gatsby sitemap 라이브러리 세팅 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Gatsby sitemap 라이브러리 세팅&lt;/h1&gt;
+&lt;p&gt;프로젝트 빌드 시 생성되는 페이지에 &lt;code class=&quot;language-text&quot;&gt;Sitemap&lt;/code&gt;을 추가해 주는 라이브러리를 사용하겠습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install gatsby-plugin-sitemap&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;또는&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add gatsby-plugin-sitemap&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;해당 라이브러리를 설치한 후 &lt;code class=&quot;language-text&quot;&gt;gatsby-config.js&lt;/code&gt;에 플러그인을 등록해 줍니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token literal-property property&quot;&gt;siteMetadata&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token literal-property property&quot;&gt;siteUrl&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;https://www.example.com&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;gatsby-plugin-sitemap&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;작성 완료했다면 프로젝트를 빌드 하여 &lt;code class=&quot;language-text&quot;&gt;Sitemap&lt;/code&gt; 잘 생성되는지 확인해 봅니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn build&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;빌드가 정상적으로 완료되면 새로 생성된 &lt;code class=&quot;language-text&quot;&gt;public/sitemap/sitemap-0.xml&lt;/code&gt; 파일이 생성됐는지 확인해 줍니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3554ab79d423392751882d59011110c1/40547/gatsby-sitemap2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 86.97916666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABs0lEQVQ4y5WTiXLDIAxE8/+/2eawAWEOAcbE2xE5pqmbJmVGI+yx1g9p2XkfsN8fMKgTzKQw0oCRTjjqz57JGwT2qEvFO2sXI+PjQwQHWGegaMBgjhj0AdqOMPLOKnBmYAXWdf0zdusKkE3YHwmn04jPvcKoHFIqyDmDOaO1tf/9e+HteUM41wXGMnxgyPEnFxBiQinlEnPF0s5S/p5ga2cYYgyjg9KEYZxgKKCUGbXWHufzPwhrbSDLcC7CeQ9rPULkftyUElLKWJa2IbxorRvRTqgpYtQexliM2sFOjFoXtCbR8AvIc8KlXQi1cSCyUNqCrAdzQs4FiRNKznfi3PfzQxt+CF4IDXkQTV3Ye+4Dmef5nntc90L/rI9dUKYsRzWGMCoLZdyVMN2pJHPinsu8PAxpYxuaEkLICIHhfEIuc+9d63Z5vn7tofRCjnw8iWUUDkcNpR04MlIuV9HtjfibUIzthTJichEhZoidbt9+L3rpwxvh4UoopJo8SqkPV+5tQTGtEAqZcw7Wun79mBksAyjLQ/FLQSHRJkKZAENTzz7kq6G3xS8Fc669X+9O85XgF3rSM7eGGBbFAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/3554ab79d423392751882d59011110c1/a59e9/gatsby-sitemap2.webp 192w,
+/static/3554ab79d423392751882d59011110c1/0ca9f/gatsby-sitemap2.webp 384w,
+/static/3554ab79d423392751882d59011110c1/dc9b9/gatsby-sitemap2.webp 768w,
+/static/3554ab79d423392751882d59011110c1/419f7/gatsby-sitemap2.webp 1067w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/3554ab79d423392751882d59011110c1/3b721/gatsby-sitemap2.png 192w,
+/static/3554ab79d423392751882d59011110c1/66595/gatsby-sitemap2.png 384w,
+/static/3554ab79d423392751882d59011110c1/fe486/gatsby-sitemap2.png 768w,
+/static/3554ab79d423392751882d59011110c1/40547/gatsby-sitemap2.png 1067w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/3554ab79d423392751882d59011110c1/fe486/gatsby-sitemap2.png&quot;
+            alt=&quot;xml parser img&quot;
+            title=&quot;xml parser img&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;사이트맵 폴더를 보면 &lt;code class=&quot;language-text&quot;&gt;sitemap-index.xml&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;sitemap-0.xml&lt;/code&gt; 파일 두 개가 있는데 &lt;code class=&quot;language-text&quot;&gt;sitemap-index.xml&lt;/code&gt; 파일을 잘 보면 따로 만들어졌던 &lt;code class=&quot;language-text&quot;&gt;sitemap-0.xml&lt;/code&gt; 파일을 참조하고 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/180fb362b4aa47f03faee36cb371c160/d2c78/gatsby-sitemap3.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 21.875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAoklEQVQY03WNDYvCQAxE+/9/ogiHoJ5K201WN9kPu09aOLmDc+DBTCAzw+kc2O2PHM8X4kNRFcZ5RGJglgmNgnni/oiYO601ns9GrfVNKeXth94Xrjfhcpu3pxXRgKgQ7xGJQpCZKUyoKtkzOTd6518NZpXTt/J1GEnJydkxM8xWn7cCN8M9bzd3x7yyLGtjp/e/DOtaSoVcGh9GP+p30U9+Aa96N9BobJZkAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/180fb362b4aa47f03faee36cb371c160/a59e9/gatsby-sitemap3.webp 192w,
+/static/180fb362b4aa47f03faee36cb371c160/0ca9f/gatsby-sitemap3.webp 384w,
+/static/180fb362b4aa47f03faee36cb371c160/dc9b9/gatsby-sitemap3.webp 768w,
+/static/180fb362b4aa47f03faee36cb371c160/65d6a/gatsby-sitemap3.webp 812w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/180fb362b4aa47f03faee36cb371c160/3b721/gatsby-sitemap3.png 192w,
+/static/180fb362b4aa47f03faee36cb371c160/66595/gatsby-sitemap3.png 384w,
+/static/180fb362b4aa47f03faee36cb371c160/fe486/gatsby-sitemap3.png 768w,
+/static/180fb362b4aa47f03faee36cb371c160/d2c78/gatsby-sitemap3.png 812w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/180fb362b4aa47f03faee36cb371c160/fe486/gatsby-sitemap3.png&quot;
+            alt=&quot;xml parser img2&quot;
+            title=&quot;xml parser img2&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;이런 식으로 사이트맵을 구성하는 이유는 사이트맵이 보유할 수 있는 데이터의 양에 제한이 있기 때문에 URL이 약 50,000 이상인 경우 여러 사이트맵을 만든 다음 하나의 사이트맵으로 참조하도록 하는 것입니다.&lt;/p&gt;
+&lt;p&gt;그래서 이를 해결하기 위해 모든 URL을 나눈 후 나눠진 개수만큼 &lt;code class=&quot;language-text&quot;&gt;sitemap-0.xml&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;sitemap-1.xml&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;...&lt;/code&gt;으로 사이트맵을 생성하는 것입니다.&lt;/p&gt;
+&lt;p&gt;그리고 이렇게 생성된 사이트맵들은 모두 &lt;code class=&quot;language-text&quot;&gt;sitemap-index.xml&lt;/code&gt; 파일에서 참조하도록 되어있습니다.&lt;/p&gt;
+&lt;p&gt;다만 일부 사이트에서는 이를 방지하고자 카테고리에 따라 분리하기도 합니다.&lt;/p&gt;
+&lt;h1 id=&quot;마치며&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A7%88%EC%B9%98%EB%A9%B0&quot; aria-label=&quot;마치며 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;마치며&lt;/h1&gt;
+&lt;p&gt;사실 대규모 프로젝트가 아닌 이상 굳이 사이트맵을 나눌 필요가 없지 않을까 이런 생각이 들긴 합니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;참고-자료&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C&quot; aria-label=&quot;참고 자료 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고 자료&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://cockloft.tistory.com/104&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;사이트맵이란?(sitemap)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developers.google.com/search/docs/advanced/sitemaps/overview?hl=ko&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;사이트맵 알아보기&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;gatsby-plugin-sitemap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://support.google.com/webmasters/thread/76418206/difference-between-sitemaps-and-sitemaps-index?hl=en&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;Difference between Sitemaps and Sitemaps index?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Gatsby "document is not defined" 문제 해결하기]]></title><description><![CDATA["document is not defined" 문제 발생 원인과 오류 해결하기]]></description><link>https://box8741.github.io/2022-02-14/document-is-not-defined-error/</link><guid isPermaLink="false">https://box8741.github.io/2022-02-14/document-is-not-defined-error/</guid><pubDate>Mon, 14 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;문제-발생&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EB%B0%9C%EC%83%9D&quot; aria-label=&quot;문제 발생 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 발생&lt;/h1&gt;
+&lt;p&gt;Gatsby 개발 블로그를 작업을 거의 다 끝내 처음으로 yarn build를 하고 나니 “document is not defined” 에러가 발생습니다.&lt;/p&gt;
+&lt;p&gt;Gatsby를 사용하면서 위와 같은 오류가 나는 이유와 해결 방법에 대해서 소개하려고 합니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 550px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/42ccf02df910e9299139c51ce4cc2162/8c3ad/document-is-not-defined-error2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 32.8125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABAElEQVQoz21Ry1LDMAzMt0CHkLTUthwrcR6USZpC2+E3uHDmFsqBD1/GTt1JaA87u5LslTSKPsQKn7TGQSjcpYRkqfC4JMSpQpzSWYd4rCUrPYPLhXxUlS/QVIC0hcoqZHkDMiNrU/ucYxez3SB9yvCQSG8eeGoc6byBMjWI69GIG2iuL3CGoYFvwg2ULj27utR2PqEkC8pKUFZBkPWPHQsqzrAQqvAfnXbmfmquffMrw/tEImAx4UWiJqwu+em6N1fOVQ6WDJYGrHiE08LMdC4ZRjLSfwe5Osrv+x7DrsPQPuP0usVp3+O7b8f4+Iah3Xj9s+vw1XcQa4P4xqUD/gDZxeDTFOrCKwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/42ccf02df910e9299139c51ce4cc2162/a59e9/document-is-not-defined-error2.webp 192w,
+/static/42ccf02df910e9299139c51ce4cc2162/0ca9f/document-is-not-defined-error2.webp 384w,
+/static/42ccf02df910e9299139c51ce4cc2162/7df4b/document-is-not-defined-error2.webp 550w&quot;
+              sizes=&quot;(max-width: 550px) 100vw, 550px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/42ccf02df910e9299139c51ce4cc2162/3b721/document-is-not-defined-error2.png 192w,
+/static/42ccf02df910e9299139c51ce4cc2162/66595/document-is-not-defined-error2.png 384w,
+/static/42ccf02df910e9299139c51ce4cc2162/8c3ad/document-is-not-defined-error2.png 550w&quot;
+            sizes=&quot;(max-width: 550px) 100vw, 550px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/42ccf02df910e9299139c51ce4cc2162/8c3ad/document-is-not-defined-error2.png&quot;
+            alt=&quot;document is not defined img&quot;
+            title=&quot;document is not defined img&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&quot;문제-발생-원인&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EB%B0%9C%EC%83%9D-%EC%9B%90%EC%9D%B8&quot; aria-label=&quot;문제 발생 원인 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 발생 원인&lt;/h1&gt;
+&lt;p&gt;Gatsby의 같은 경우에는 두 가지의 다른 환경에서 애플리케이션 실행이 가능합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;gatsby develop : runtime&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;gatsby build : Build time&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;보편적으로 gatsby build를 사용할 때 이런 오류가 발생하는데 그 이유에 대해서 알아보겠습니다.&lt;/p&gt;
+&lt;h3 id=&quot;build-time-vs-runtime&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#build-time-vs-runtime&quot; aria-label=&quot;build time vs runtime permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Build time vs runtime&lt;/h3&gt;
+&lt;p&gt;사용자가 누르고 클릭할 수 있는 상호작용이 가능한 웹 브라우저에서 발생하는 프로세스를 Browser runtime이라고 하는데
+Javascript 코드의 경우 브라우저와 상호작용할 수 있고 window.location과 같은 Browser API를 사용할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;반대로 Build time은 서버 프로세스를 사용하여 웹 사이트를 파일로 컴파일하여 나중에 웹 브라우저로 전달할 수 있도록 하는 과정을 의미하므로 이때는 window와 같은 Browser API를 사용할 수가 없습니다.&lt;/p&gt;
+&lt;p&gt;gatsby develop 커맨드의 경우 gatsby build 커맨드가 수행하는 빌드 단계 중 일부를 수행하지 않습니다.
+대신 runtime처럼 브라우저에서 사이트를 미리 보는데 사용할 수 있는 개발 서버를 사용합니다.&lt;/p&gt;
+&lt;p&gt;gatsby build 커맨드의 경우 브라우저를 사용할 수 없으므로 코드에서 Browser API에 대한 호출을 할 경우 예외 처리해야 합니다.&lt;/p&gt;
+&lt;h1 id=&quot;해결방법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%95%B4%EA%B2%B0%EB%B0%A9%EB%B2%95&quot; aria-label=&quot;해결방법 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;해결방법&lt;/h1&gt;
+&lt;p&gt;위와 같은 문제의 해결 방법으로는 2가지가 있습니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;doucment 및 window가 정의되어 있는지를 확인 후 사용하기&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;typeof&lt;/span&gt; document &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;undefined&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; temp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;useEffect 함수 안에 넣어 사용하기&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;useEffect 및 componentDidMount처럼 생명주기의 경우 브라우저가 있지 않으면 코드가 실행되지 않습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token function&quot;&gt;useEffect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; temp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;참고-자료&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C&quot; aria-label=&quot;참고 자료 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고 자료&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.gatsbyjs.com/docs/debugging-html-builds/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;Debugging HTML Builds&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.greenroots.info/gatsby-the-window-is-not-defined-error-what-and-how-to-fix-it&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;Gatsby - the window is not defined error, what and how to fix it?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.gatsbyjs.com/docs/conceptual/overview-of-the-gatsby-build-process/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;Overview of the Gatsby Build Process&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[vscode-styled-components extension 자동완성 버그 해결하기]]></title><description><![CDATA[vscode-styled-components extension 자동완성 버그 발생 원인과 해결 방안에 대해서 알아보자.]]></description><link>https://box8741.github.io/2022-02-08/vscode-styled-component-bug/</link><guid isPermaLink="false">https://box8741.github.io/2022-02-08/vscode-styled-component-bug/</guid><pubDate>Tue, 08 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;안녕하세요 오늘은 vscode-styled-components extension 자동완성 버그 발생 원인과 해결 방안에 대해서 알아보겠습니다.&lt;/p&gt;
+&lt;h1 id=&quot;문제-발생&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EB%B0%9C%EC%83%9D&quot; aria-label=&quot;문제 발생 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 발생&lt;/h1&gt;
+&lt;p&gt;어느 날 갑자기 컴퓨터를 켜서 작업하려고 하니 styled-component 자동완성이 안되는 문제가 발생했습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c2b85c53b25547f3fa140f6c50d037a1/0eb09/vscode-styled-component-bug.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 46.35416666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABE0lEQVQoz42S3W7DIAxG8y6TlgYCNBAD+UONuqmadrP3f5kzNV2lTtOWXRyBJePPn03VtAHnBtb8QekXTv3CGN4Y14IsAyZEjjGhTOCgPdf8v6ga02NsIvozoUtMkhA/4+NEnGckZY6StuRrwT0qbQXjEkleyXlhzCMiGeMnJK1IN9K0gjIRZfeptLteepSTTaGLhZBW+nwipMKz8jzVllp5lJFdNsvaRMKxYMIJ6zM5Jlr7NTPdcdjw/7TsEq0Tgp8Y5J2UFy7nhfO6EPNMKTMv64zEgVqH/aVol2ldv3XUaI/ehn/nu/rjYn4tqKzQ2sTQX8h+YvYZiQVzTD8e3uK/v051V6x1R72dNx472rP5WPATVToZMgKT5z4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/c2b85c53b25547f3fa140f6c50d037a1/a59e9/vscode-styled-component-bug.webp 192w,
+/static/c2b85c53b25547f3fa140f6c50d037a1/0ca9f/vscode-styled-component-bug.webp 384w,
+/static/c2b85c53b25547f3fa140f6c50d037a1/601b1/vscode-styled-component-bug.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/c2b85c53b25547f3fa140f6c50d037a1/3b721/vscode-styled-component-bug.png 192w,
+/static/c2b85c53b25547f3fa140f6c50d037a1/66595/vscode-styled-component-bug.png 384w,
+/static/c2b85c53b25547f3fa140f6c50d037a1/0eb09/vscode-styled-component-bug.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/c2b85c53b25547f3fa140f6c50d037a1/0eb09/vscode-styled-component-bug.png&quot;
+            alt=&quot;auto complete bug img&quot;
+            title=&quot;auto complete bug img&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&quot;해결-방안-찾기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%95%B4%EA%B2%B0-%EB%B0%A9%EC%95%88-%EC%B0%BE%EA%B8%B0&quot; aria-label=&quot;해결 방안 찾기 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;해결 방안 찾기&lt;/h1&gt;
+&lt;p&gt;나와 같은 문제가 발생한 여러 글을 읽어봤지만&lt;/p&gt;
+&lt;p&gt;해결 방법은 VSC 버전이 최신 버전이 아니라는 말이었고 나 같은 경우에는 이미 최신 버전이였기에 다른 방법을 찾아볼 수밖에 없었다.&lt;/p&gt;
+&lt;p&gt;하지만 이로 인해 얻을 수 있던 힌트는 VSC 버전과 vscode-styled-components extension의 버전이 맞지 않으면 오작동 할 수 있겠다고 생각했고
+어제까지만 해도 작동했던 것으로 보아 VSC 가 자동 업데이트되면서 문제가 발생한 거 같습니다.&lt;/p&gt;
+&lt;h1 id=&quot;해결-방법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95&quot; aria-label=&quot;해결 방법 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;해결 방법&lt;/h1&gt;
+&lt;p&gt;먼저 VSC 다운그레이드를 할 경우 자동 업데이트되는 것을 방지하기 위해 아래와 같이 변경해 줍니다.&lt;/p&gt;
+&lt;p&gt;(파일 &gt; 기본 설정 &gt; 설정) 들어가서 자동 업데이트 여부를 none으로 변경&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7359593d5d30f15a8c289481cad10390/98650/vscode-styled-component-bug2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABzklEQVQ4y21T15KbQBDkV3xJAhGXsKwIu4AESLpgV/nVP+H/r2rXDFrM2ffQNQGY7gk4ni/w+Ozj4emAb4/e13j6H8v7Lh6effQfv1Gdf2HnhnCk0ohTBddPsT8Itl6QwvNT9m1+58XYecknuz8k/LxQPfLSwI8KOKrq4QUZf3QIc9TtGd1wQX++YRhfGZRLsgoir5AWzd3W63cvboQXN2bf6YYrMtms6uL0iEgo+FGOIJbMahHEBefIUmw7oMLWd0w/QyoDP8wRJIqVtd3ESkiFyGtWR0TkC1Za3xXXrJZAMRcsqw40R5qZFxYQRcPWj0smCMWR4Udy7eIrWJUOvWRByao9oe1mtGZCLltuMUzKxcYSkSg5Jku57eJ4htsEFaQ287JlUNtJduR2Ai6mECZyJSGCZePJqv5TQdqy7mY0ZkRjplVtd7oygZ0jkVoiK4AIVoX7e0HaHBXKpIYo2hUUUzEi3G59C3q2KrRy81JjvHxgun7HfPuBcX5ne3v/CTNcUOuRL4DQ6HGBmaD7GcdmWA7bFqM50GwM3WVpkEqaYYus1Eil5j+hUBqFMgwit76NueC/M6z1mdWcpje2y7wqpJvbs5bG8Pcelz/nD2faobpJtDWkAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/7359593d5d30f15a8c289481cad10390/a59e9/vscode-styled-component-bug2.webp 192w,
+/static/7359593d5d30f15a8c289481cad10390/0ca9f/vscode-styled-component-bug2.webp 384w,
+/static/7359593d5d30f15a8c289481cad10390/dc9b9/vscode-styled-component-bug2.webp 768w,
+/static/7359593d5d30f15a8c289481cad10390/b2907/vscode-styled-component-bug2.webp 835w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/7359593d5d30f15a8c289481cad10390/3b721/vscode-styled-component-bug2.png 192w,
+/static/7359593d5d30f15a8c289481cad10390/66595/vscode-styled-component-bug2.png 384w,
+/static/7359593d5d30f15a8c289481cad10390/fe486/vscode-styled-component-bug2.png 768w,
+/static/7359593d5d30f15a8c289481cad10390/98650/vscode-styled-component-bug2.png 835w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/7359593d5d30f15a8c289481cad10390/fe486/vscode-styled-component-bug2.png&quot;
+            alt=&quot;update img&quot;
+            title=&quot;update img&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;페이지-접속&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%91%EC%86%8D&quot; aria-label=&quot;페이지 접속 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;페이지 접속&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://code.visualstudio.com/updates&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;https://code.visualstudio.com/updates&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;페이지 접속 후 현재 버전 보다 한 단계 낮은 버전을 다운로드해줍니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4e165ad7ed695167ab202e1fa46b0578/f0257/vscode-styled-component-bug4.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 72.91666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACXUlEQVQ4y3VTf0/bMBDNV2FM0NJROqlo2reC8mNAge2jsqlqGyeOYye24ybpm+7SBPbHLD3d1fW9e/cj0efJN1xM55hO55hMvuL40wgnp1OMv1zi5OQcp6fnODubYTy+YH80muL4eMw4OhphMplhPv+O2eyS/ejm+hbX17e4uiJ7h8XiDovbJW7uf+HHwwuWT69YLn/i6ekVj48vB/vMPtmHh2eOJSwW94hC3eLjadsWbdtg39bY7XZomgYhBNR1jaap2f7vNHWNSGqLzDgm2oWANE0hZQalFLIsQ57n7JM1hYX3nkk/gpJSPL2JnLVwznIG5xziOEaSJEws0hxCaiRpxohTA0UClIbKNbK8hFQFQ5sC3jtEZVky0X6/50zke+c4CfnWuoO16N9+/N1bagvdR3RBveL+NQ2yTCGRCqlUXLqUktWmScIlUckUQwQkoC+bSi6KolNIf/RHFw5/tgW2aQGRKkjuaUeaCIEkIZswMQmhyuiQJS5W+D65PROu4gKrWGMtNFLq3aGv3NukS7DdbjlJVVUDoTGmU9iXTCc3Dm8bg3VSYiVKpFnBKolMCNENSwjkuWYhfSwTUsmkkOT3RxmLt7Vhlb83hifbk4k4hogFtpsNtNYIVRjiiLAoDCKeqvdDL6wPkNpD5gQHpQ0H00A0+4ZL66dbWjvEDkMh0CUhhAre2Q6+WxFK2K1LBet3cD6gdAHGBoRdM6yc9+F9D+lQT6TSPN0sJyXF8JXQOxoAgRIQKkLlh1WiRf9nyk3T8sbTJ2adR6++B/WM9s/76kDi4EPNSeieCP8CxTU7T82JRBgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/4e165ad7ed695167ab202e1fa46b0578/a59e9/vscode-styled-component-bug4.webp 192w,
+/static/4e165ad7ed695167ab202e1fa46b0578/0ca9f/vscode-styled-component-bug4.webp 384w,
+/static/4e165ad7ed695167ab202e1fa46b0578/dc9b9/vscode-styled-component-bug4.webp 768w,
+/static/4e165ad7ed695167ab202e1fa46b0578/0e1ad/vscode-styled-component-bug4.webp 1048w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/4e165ad7ed695167ab202e1fa46b0578/3b721/vscode-styled-component-bug4.png 192w,
+/static/4e165ad7ed695167ab202e1fa46b0578/66595/vscode-styled-component-bug4.png 384w,
+/static/4e165ad7ed695167ab202e1fa46b0578/fe486/vscode-styled-component-bug4.png 768w,
+/static/4e165ad7ed695167ab202e1fa46b0578/f0257/vscode-styled-component-bug4.png 1048w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/4e165ad7ed695167ab202e1fa46b0578/fe486/vscode-styled-component-bug4.png&quot;
+            alt=&quot;download page img&quot;
+            title=&quot;download page img&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;해결&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%95%B4%EA%B2%B0&quot; aria-label=&quot;해결 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;해결&lt;/h3&gt;
+&lt;p&gt;다운그레이드 후 VSC 재실행 시 자동완성이 정상적으로 실행된다면 성공 :)&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 505px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2d3582466989c3406bbee9c7143a461a/eccca/vscode-styled-component-bug3.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 61.979166666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABeElEQVQoz4WS2W7bMBBF/SNBE8eytZDauMqUbcmOjDp10Pb/P+YUUpICQbw8XBCcGR7MDO8skYq8aOj9H1oV2OkNjfpJ023QbUOuLZV1pFIRZzWJUDc1S6VB5A5XHzCVI2iPqVuUC9jQYpynNJZE1BPwnmaisBPQ2iO+6Vg3Ldo0yCqgXY+u1iTCkuXuptL8vWYmijGgiUVF258ZTn9RvkNWDbFQxNKQ3JPQJPJds1TqqUNTdNjNiX44U9uWVVry+JwwjzKeFulFzT/OxSqf9vcxsmcc26mO0AwMp99UJrDKqqlgehhlVzXmo/gCUEiN8kd2+xNhd8SHPcukuAm7DCwdsmgwZY/dntnuT3SHV2TleHhc8rT4OvZd4Kd/oiSn8C+st0f64deUHL037vLW2N+An2aN04rSD7iw53B8I2wHdvtXZOn4MY9vfk60utDheJF5Q6nW0/6M36HshrzyPC/FVc0jQRQXX4H/u7zg/GvxbzWiJskU/wCMsnJUuFcK0AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/2d3582466989c3406bbee9c7143a461a/a59e9/vscode-styled-component-bug3.webp 192w,
+/static/2d3582466989c3406bbee9c7143a461a/0ca9f/vscode-styled-component-bug3.webp 384w,
+/static/2d3582466989c3406bbee9c7143a461a/220a3/vscode-styled-component-bug3.webp 505w&quot;
+              sizes=&quot;(max-width: 505px) 100vw, 505px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/2d3582466989c3406bbee9c7143a461a/3b721/vscode-styled-component-bug3.png 192w,
+/static/2d3582466989c3406bbee9c7143a461a/66595/vscode-styled-component-bug3.png 384w,
+/static/2d3582466989c3406bbee9c7143a461a/eccca/vscode-styled-component-bug3.png 505w&quot;
+            sizes=&quot;(max-width: 505px) 100vw, 505px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/2d3582466989c3406bbee9c7143a461a/eccca/vscode-styled-component-bug3.png&quot;
+            alt=&quot;auto complete img&quot;
+            title=&quot;auto complete img&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;참고-자료&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C&quot; aria-label=&quot;참고 자료 permalink&quot; class=&quot;custom-class before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고 자료&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/styled-components/vscode-styled-components/issues/347&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;Intellisense not working #347&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/49346733/how-to-downgrade-vscode&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;How to downgrade vscode&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item></channel></rss>
