@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
+import Markdown from 'components/Post/Markdown'
 import TableOfContents from 'components/Post/TableOfContents'
 
 interface PostContentProps {
@@ -13,6 +14,8 @@ const PostWrapper = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
+    padding: 0px 20px;
+    overflow: auto;
   }
 `
 
@@ -22,152 +25,17 @@ const PostContentWrapper = styled.div`
   margin: 80px 0;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    display: block;
     margin: 40px 0;
   }
 `
 
-const MarkdownRenderer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 768px;
-  margin: 0 auto;
-  word-break: break-all;
-
-  line-height: 1.8;
-  font-size: 16px;
-  font-weight: 400;
-
-  p {
-    padding: 3px 0;
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-weight: 800;
-  }
-
-  h1 {
-    margin-top: 80px;
-    margin-bottom: 30px;
-  }
-  h2,
-  h3 {
-    margin-top: 40px;
-  }
-
-  h1 + h3 {
-    margin-top: 0;
-  }
-  h1 + h2 {
-    margin-top: 0;
-  }
-
-  hr + h1,
-  hr + h2,
-  hr + h3 {
-    margin-top: 0;
-  }
-
-  h1 {
-    font-size: 30px;
-  }
-
-  h2 {
-    font-size: 25px;
-  }
-
-  h3 {
-    font-size: 20px;
-  }
-
-  blockquote {
-    margin: 30px 0;
-    padding: 5px 15px;
-    border-left: 2px solid #000000;
-    font-weight: 800;
-  }
-
-  ol,
-  ul {
-    margin-left: 20px;
-    padding: 30px 0;
-  }
-
-  hr {
-    border: 1px solid #000000;
-    margin: 100px 0;
-  }
-
-  a {
-    color: #4263eb;
-    text-decoration: underline;
-  }
-
-  a > picture {
-    margin: 60px 0;
-  }
-
-  pre[class*='language-'] {
-    margin: 30px 0;
-    padding: 15px;
-    font-size: 15px;
-    border-radius: 6px;
-
-    ::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 3px;
-    }
-  }
-
-  p:not(pre) > code[class='language-text'],
-  li:not(pre) > code[class='language-text'] {
-    font-size: 14px;
-    background: rgba(0, 0, 0, 0.04);
-    color: #e91e63;
-    padding: 3px 5px;
-  }
-
-  code[class*='language-'],
-  pre[class*='language-'] {
-    tab-size: 2;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    padding: 80px 20px;
-    line-height: 1.6;
-    font-size: 14px;
-
-    h1 {
-      font-size: 23px;
-    }
-
-    h2 {
-      font-size: 20px;
-    }
-
-    h3 {
-      font-size: 17px;
-    }
-
-    img {
-      width: 100%;
-    }
-
-    hr {
-      margin: 50px 0;
-    }
-  }
-`
-
-const PostContent: FunctionComponent<PostContentProps> = function ({ html, tableOfContents }) {
+const PostContent: FunctionComponent<PostContentProps> = ({ html, tableOfContents: toc }) => {
   return (
     <PostWrapper>
       <PostContentWrapper>
-        <MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />
-        <TableOfContents toc={tableOfContents} />
+        <Markdown html={html} />
+        <TableOfContents toc={toc} />
       </PostContentWrapper>
     </PostWrapper>
   )

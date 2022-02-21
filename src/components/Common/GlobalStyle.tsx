@@ -19,20 +19,12 @@ const defaultStyle = css`
   html,
   body,
   #___gatsby {
-    height: 100%;
-  }
-
-  body::-webkit-scrollbar {
-    width: 12px;
-    background: gray;
-  }
-  body::-webkit-scrollbar-thumb {
-    background: #333333;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-  }
-  body::-webkit-scrollbar-track {
+    ::-webkit-scrollbar-thumb {
+      background: #333333;
+      border-radius: 10px;
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
   }
 
   a,
@@ -40,6 +32,11 @@ const defaultStyle = css`
     color: inherit;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  ::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
   }
 `
 

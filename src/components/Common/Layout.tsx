@@ -60,7 +60,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children, ...args }) => {
       </Helmet>
       <GlobalStyle />
       <Header />
-      <main>{children}</main>
+      {children}
       <Footer />
     </Content>
   )
