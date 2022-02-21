@@ -12,44 +12,30 @@ const MarkdownRenderer = styled.div`
   font-size: 16px;
   word-break: keep-all;
 
-  h1,
-  h2,
-  h3 {
-    font-weight: 800;
-  }
-
-  h1 {
-    margin-top: 80px;
-    margin-bottom: 30px;
-  }
-  h2,
-  h3 {
-    margin-top: 40px;
-  }
-
-  h1 + h3 {
-    margin-top: 0;
-  }
-  h1 + h2 {
-    margin-top: 0;
-  }
-
-  hr + h1,
-  hr + h2,
-  hr + h3 {
-    margin-top: 0;
-  }
-
   h1 {
     font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
   }
-
   h2 {
     font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 30px;
   }
-
   h3 {
     font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  * + h1 {
+    margin-top: 100px;
+  }
+  * + h2 {
+    margin-top: 80px;
+  }
+  * + h3 {
+    margin-top: 60px;
   }
 
   p {
@@ -123,17 +109,11 @@ const MarkdownRenderer = styled.div`
     h1 {
       font-size: 23px;
     }
-
     h2 {
       font-size: 20px;
     }
-
     h3 {
       font-size: 17px;
-    }
-
-    hr {
-      margin: 50px 0;
     }
   }
 `
