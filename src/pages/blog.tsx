@@ -1,5 +1,4 @@
 import React, { useMemo, FunctionComponent } from 'react'
-import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { graphql, PageProps } from 'gatsby'
 import queryString, { ParsedQuery } from 'query-string'
 import Layout from 'components/Common/Layout'
