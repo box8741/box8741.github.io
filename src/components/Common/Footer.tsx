@@ -3,9 +3,7 @@ import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import { Github } from '@emotion-icons/bootstrap'
 
-const FooterWrapper = styled.footer`
-  background: #333333;
-`
+const FooterWrapper = styled.footer``
 
 const FooterContent = styled.div`
   display: flex;
@@ -21,13 +19,10 @@ const FooterContent = styled.div`
   }
 `
 
-const Copyright = styled.span`
-  color: white;
-`
+const Copyright = styled.span``
 
 const GithubIcon = styled(Github)`
   width: 30px;
-  color: white;
   cursor: pointer;
 `
 

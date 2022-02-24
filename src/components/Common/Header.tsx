@@ -4,7 +4,6 @@ import { Link } from 'gatsby'
 import Logo from 'components/Common/Logo'
 
 const HeaderWrapper = styled.header`
-  background: #333333;
   min-height: 80px;
 
   @media (max-width: 768px) {
@@ -41,14 +40,12 @@ const ListItem = styled(Link)`
   font-size: 18px;
   font-weight: 400;
   margin-right: 20px;
-  color: white;
   cursor: pointer;
 
   &:last-of-type {
     margin-right: 0;
   }
   &:hover {
-    color: white;
     opacity: 0.7;
   }
 `
