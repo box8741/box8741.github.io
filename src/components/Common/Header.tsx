@@ -59,8 +59,6 @@ const Header = () => {
       <HeaderContent>
         <Logo>Developer Min</Logo>
         <List>
-          <ListItem to="/">Home</ListItem>
-          <ListItem to="/project">Project</ListItem>
           <ListItem to="/blog">Blog</ListItem>
         </List>
       </HeaderContent>

@@ -96,7 +96,6 @@ module.exports = {
         path: `${__dirname}/static`,
       },
     },
-    `gatsby-transformer-json`,
     {
       resolve: `gatsby-plugin-sharp`,
       options: {

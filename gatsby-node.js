@@ -1,6 +1,5 @@
 const path = require('path')
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const ProjectList = require('./static/ProjectList.json')
 
 exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
   const output = getConfig().output || {}
@@ -26,79 +25,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
-exports.createSchemaCustomization = ({ actions, schema }) => {
-  const { createTypes } = actions
-
-  const typeDefs = [
-    schema.buildObjectType({
-      name: 'ProjectMetaData',
-      fields: {
-        thumbnail: {
-          type: 'ImageSharp',
-          resolve: async (source, args, context, info) => {
-            const imageNode = await context.nodeModel.findOne({
-              type: 'ImageSharp',
-              query: {
-                filter: {
-                  fluid: {
-                    originalName: { eq: source.thumbnail },
-                  },
-                },
-              },
-            })
-
-            return imageNode
-          },
-        },
-        extraImage: {
-          type: '[ImageSharp]',
-          resolve: async (source, args, context, info) => {
-            const imageNodeArray = await Promise.all(
-              source.extraImage.map(async fileName => {
-                const imageNode = await context.nodeModel.findOne({
-                  type: 'ImageSharp',
-                  query: {
-                    filter: {
-                      fluid: {
-                        originalName: { eq: fileName },
-                      },
-                    },
-                  },
-                })
-                return imageNode
-              }),
-            )
-            return imageNodeArray
-          },
-        },
-      },
-      interfaces: ['Node'],
-      extensions: { infer: true },
-    }),
-  ]
-
-  createTypes(typeDefs)
-}
-
-exports.sourceNodes = async ({ actions: { createNode }, createNodeId, createContentDigest }) => {
-  const generateProjectNode = type => {
-    ProjectList[type].forEach((projectItem, index) => {
-      createNode({
-        ...projectItem,
-        id: createNodeId(`project-${type}-${index}`),
-        type,
-        internal: {
-          type: `ProjectMetaData`,
-          contentDigest: createContentDigest(projectItem),
-        },
-      })
-    })
-  }
-
-  generateProjectNode('app')
-  generateProjectNode('web')
-}
-
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
@@ -121,44 +47,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     `,
   )
 
-  const queryAllProjectData = await graphql(
-    `
-      {
-        allProjectMetaData {
-          edges {
-            node {
-              id
-              type
-            }
-          }
-        }
-      }
-    `,
-  )
-
-  if (queryAllMarkdownData.errors || queryAllProjectData.errors) {
+  if (queryAllMarkdownData.errors) {
     reporter.panicOnBuild(`Error while running query`)
     return
   }
-
-  const projectByType = projectType =>
-    queryAllProjectData.data.allProjectMetaData.edges.reduce((acc, { node: { id, type } }) => {
-      if (projectType === type) acc.push(id)
-      return acc
-    }, [])
-
-  const generateProjectPage = type => {
-    projectByType(type).forEach((id, index) => {
-      createPage({
-        path: `/project/${type}_${index}`,
-        component: path.resolve(__dirname, 'src/templates/project_template.tsx'),
-        context: { projectId: id },
-      })
-    })
-  }
-
-  generateProjectPage('app')
-  generateProjectPage('web')
 
   const posts = queryAllMarkdownData.data.allMarkdownRemark.edges
   posts.forEach(
