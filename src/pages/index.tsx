@@ -3,6 +3,7 @@ import { graphql, PageProps } from 'gatsby'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { useSiteMetadata } from 'hooks/useSiteMetadata'
 import Layout from 'components/Common/Layout'
+import PageTemplate from 'components/Common/PageTemplate'
 import Introduction from 'components/Main/Introduction'
 
 type IndexPageProps = PageProps & {
@@ -27,7 +28,9 @@ const IndexPage: FunctionComponent<IndexPageProps> = ({
   const { title, description, siteUrl } = useSiteMetadata()
   return (
     <Layout title={title} description={description} url={siteUrl} image={publicURL}>
-      <Introduction profileImage={gatsbyImageData} />
+      <PageTemplate>
+        <Introduction profileImage={gatsbyImageData} />
+      </PageTemplate>
     </Layout>
   )
 }

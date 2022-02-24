@@ -4,10 +4,10 @@ import { Link } from 'gatsby'
 import Logo from 'components/Common/Logo'
 
 const HeaderWrapper = styled.header`
-  min-height: 80px;
+  min-height: 100px;
 
   @media (max-width: 768px) {
-    min-height: auto;
+    min-height: 80px;
     padding: 12px 0;
   }
 `
@@ -21,8 +21,6 @@ const HeaderContent = styled.div`
   margin: 0 auto;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
     width: 100%;
     padding: 0 20px;
   }

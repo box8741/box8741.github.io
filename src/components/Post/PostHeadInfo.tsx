@@ -14,7 +14,6 @@ const PostHeadInfoWrapper = styled.div`
   height: 100%;
   margin: 0 auto;
   padding: 60px 0;
-  color: #ffffff;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -24,6 +23,8 @@ const PostHeadInfoWrapper = styled.div`
 
 const Title = styled.div`
   display: -webkit-box;
+  text-align: center;
+  word-break: keep-all;
   overflow: hidden;
   overflow-wrap: break-word;
   margin-top: auto;
@@ -31,7 +32,7 @@ const Title = styled.div`
   white-space: normal;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  font-size: 45px;
+  font-size: 40px;
   font-weight: 800;
 
   @media (max-width: 768px) {
@@ -39,29 +40,43 @@ const Title = styled.div`
   }
 `
 
+const HorizonLine = styled.div`
+  height: 1px;
+  background: #cccccc;
+  width: 100px;
+  margin: 20px auto;
+`
+
 const PostData = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-top: 10px;
-  font-size: 18px;
-  font-weight: 700;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
     font-size: 15px;
     font-weight: 400px;
   }
+`
+
+const Category = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+`
+
+const Date = styled.div`
+  font-size: 16px;
+  color: gray;
 `
 
 const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = ({ title, date, categories }) => {
   return (
     <PostHeadInfoWrapper>
       <Title>{title}</Title>
+      <HorizonLine />
       <PostData>
-        <div>{categories.join(' / ')}</div>
-        <div>{date}</div>
+        <Category>{categories.join(' / ')}</Category>
+        <Date>{date}</Date>
       </PostData>
     </PostHeadInfoWrapper>
   )

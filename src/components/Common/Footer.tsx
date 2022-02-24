@@ -19,7 +19,9 @@ const FooterContent = styled.div`
   }
 `
 
-const Copyright = styled.span``
+const Copyright = styled.span`
+  font-size: 16px;
+`
 
 const GithubIcon = styled(Github)`
   width: 30px;

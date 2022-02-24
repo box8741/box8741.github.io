@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import Layout from 'components/Common/Layout'
+import PageTemplate from 'components/Common/PageTemplate'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
 import ProfileWidget from 'components/Post/ProfileWidget'
@@ -63,11 +64,13 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
 
   return (
     <Layout title={title} description={summary} url={href} image={publicURL}>
-      <PostHead title={title} date={date} categories={categories} thumbnail={gatsbyImageData} />
-      <PostContent html={html} tableOfContents={tableOfContents} />
-      <ProfileWidget profileImage={profileImage} />
-      <AnotherPage pageContext={pageContext} />
-      <CommentWidget />
+      <PageTemplate>
+        <PostHead title={title} date={date} categories={categories} thumbnail={gatsbyImageData} />
+        <PostContent html={html} tableOfContents={tableOfContents} />
+        <ProfileWidget profileImage={profileImage} />
+        <AnotherPage pageContext={pageContext} />
+        <CommentWidget />
+      </PageTemplate>
     </Layout>
   )
 }

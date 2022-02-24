@@ -3,8 +3,6 @@ import styled from '@emotion/styled'
 import { Helmet } from 'react-helmet'
 import GlobalStyle from 'components/Common/GlobalStyle'
 import { useSiteMetadata } from 'hooks/useSiteMetadata'
-import Header from 'components/Common/Header'
-import Footer from 'components/Common/Footer'
 
 type LayoutProps = {
   title?: string
@@ -14,11 +12,10 @@ type LayoutProps = {
   children: ReactNode
 }
 
-const Content = styled.div`
+const LayoutWrapper = styled.div`
   min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
 `
+
 // title, description, url, image, children
 const Layout: FunctionComponent<LayoutProps> = ({ children, ...args }) => {
   const siteMetadata = useSiteMetadata()
@@ -31,7 +28,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children, ...args }) => {
   }
 
   return (
-    <Content>
+    <LayoutWrapper>
       <Helmet>
         <title>{title}</title>
 
@@ -59,10 +56,8 @@ const Layout: FunctionComponent<LayoutProps> = ({ children, ...args }) => {
         <html lang="ko" />
       </Helmet>
       <GlobalStyle />
-      <Header />
       {children}
-      <Footer />
-    </Content>
+    </LayoutWrapper>
   )
 }
 
