@@ -5,9 +5,15 @@ import { useSiteMetadata } from 'hooks/useSiteMetadata'
 import Layout from 'components/Common/Layout'
 import PageTemplate from 'components/Common/PageTemplate'
 import Introduction from 'components/Main/Introduction'
+import PostList from 'components/Main/PostList'
+
+import { PostListItemType } from 'types/PostItem.types'
 
 type IndexPageProps = PageProps & {
   data: {
+    allMarkdownRemark: {
+      edges: PostListItemType[]
+    }
     file: {
       childImageSharp: {
         gatsbyImageData: IGatsbyImageData
@@ -19,6 +25,7 @@ type IndexPageProps = PageProps & {
 
 const IndexPage: FunctionComponent<IndexPageProps> = ({
   data: {
+    allMarkdownRemark: { edges },
     file: {
       childImageSharp: { gatsbyImageData },
       publicURL,
@@ -30,6 +37,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = ({
     <Layout title={title} description={description} url={siteUrl} image={publicURL}>
       <PageTemplate>
         <Introduction profileImage={gatsbyImageData} />
+        <PostList selectedCategory={'All'} posts={edges} />
       </PageTemplate>
     </Layout>
   )
@@ -39,9 +47,30 @@ export default IndexPage
 
 export const getIndexData = graphql`
   query getIndexData {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            summary
+            date(formatString: "YYYY.MM.DD")
+            categories
+            thumbnail {
+              childImageSharp {
+                gatsbyImageData(width: 220, height: 220)
+              }
+            }
+          }
+        }
+      }
+    }
     file(name: { eq: "profile-image" }) {
       childImageSharp {
-        gatsbyImageData(width: 260, height: 260)
+        gatsbyImageData(width: 160, height: 160)
       }
       publicURL
     }

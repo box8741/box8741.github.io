@@ -21,9 +21,6 @@ type BlogPageProps = PageProps & {
       edges: PostListItemType[]
     }
     file: {
-      childImageSharp: {
-        gatsbyImageData: IGatsbyImageData
-      }
       publicURL: string
     }
   }
@@ -91,7 +88,7 @@ export const getPostList = graphql`
             categories
             thumbnail {
               childImageSharp {
-                gatsbyImageData(width: 220, height: 220)
+                gatsbyImageData(width: 180)
               }
             }
           }
@@ -99,9 +96,6 @@ export const getPostList = graphql`
       }
     }
     file(name: { eq: "profile-image" }) {
-      childImageSharp {
-        gatsbyImageData(width: 120, height: 120)
-      }
       publicURL
     }
   }

@@ -11,7 +11,7 @@ const IntroductionWrapper = styled.div`
   display: flex;
   align-items: center;
   width: 768px;
-  margin: 80px auto;
+  margin: 40px auto;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -21,7 +21,7 @@ const IntroductionWrapper = styled.div`
 `
 
 const SubTitle = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   word-break: keep-all;
 
@@ -32,7 +32,7 @@ const SubTitle = styled.div`
 
 const Title = styled.div`
   margin-top: 5px;
-  font-size: 35px;
+  font-size: 30px;
   font-weight: 700;
   word-break: keep-all;
 
