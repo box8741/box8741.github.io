@@ -2,7 +2,7 @@
 date: '2022-02-16'
 title: 'Gatsby 사이트맵(Sitemap) 적용하기'
 categories: ['Gatsby', 'Sitemap']
-summary: '사이트맵을 사용하는 이유와 적용 방법에 대해서 알아보자'
+summary: '사이트맵이란? 사이트맵이란 사이트에 있는 페이지, 동영상 및 기타 파일등 그 관계에 관한 정보를 제공하는 파일입니다. 쉽게 말해 사용자들이 방문할 수 있는 페이지의 목록을 나타낸 것처럼 홈페이지의 설계도와 같은 것입니다.'
 thumbnail: './gatsby-sitemap.png'
 ---
 

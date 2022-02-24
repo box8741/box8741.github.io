@@ -2,7 +2,7 @@
 date: '2022-02-14'
 title: 'Gatsby "document is not defined" 문제 해결하기'
 categories: ['Gatsby', '삽질']
-summary: '"document is not defined" 문제 발생 원인과 오류 해결하기'
+summary: '문제 발생 Gatsby 개발 블로그를 작업을 거의 다 끝내 처음으로 `yarn build`를 하고 나니 "document is not defined" 에러가 발생습니다. Gatsby를 사용하면서 위와 같은 오류가 나는 이유와 해결 방법에 대해서 소개하려고 합니다.'
 thumbnail: './document-is-not-defined-error.png'
 ---
 

@@ -7,39 +7,6 @@ import { PostFrontmatterType } from 'types/PostItem.types'
 
 type PostItemProps = PostFrontmatterType & { link: string }
 
-const PostItemWrapper = styled(Link)`
-  display: flex;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
-  transition: box-shadow 0.3s, transform 0.3s;
-  cursor: pointer;
-  margin-bottom: 24px;
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-  &:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transform: scale(1.01);
-  }
-`
-
-const ThumbnailImage = styled(GatsbyImage)`
-  width: 220px;
-  border-radius: 10px 0 0 10px;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`
-
-const PostItemContent = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-`
-
 const Title = styled.div`
   display: -webkit-box;
   overflow: hidden;
@@ -51,6 +18,36 @@ const Title = styled.div`
   -webkit-box-orient: vertical;
   font-size: 20px;
   font-weight: 700;
+`
+
+const PostItemWrapper = styled(Link)`
+  display: flex;
+  padding: 16px;
+  border-top: 1px solid #dddddd;
+  cursor: pointer;
+
+  &:last-of-type {
+    margin-bottom: 0;
+    border-bottom: 1px solid #dddddd;
+  }
+  &:hover ${Title} {
+    text-decoration: underline;
+  }
+`
+
+const ThumbnailImage = styled(GatsbyImage)`
+  width: 180px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`
+
+const PostItemContent = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
 `
 
 const Date = styled.div`

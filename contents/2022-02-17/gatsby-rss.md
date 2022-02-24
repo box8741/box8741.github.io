@@ -2,7 +2,7 @@
 date: '2022-02-16'
 title: 'Gatsby 블로그 RSS Feed 적용하기'
 categories: ['Gatsby', 'RSS']
-summary: 'RSS피드를 사용하는 이유와 적용 방법에 대해서 알아보기'
+summary: 'RSS피드란? RSS(Rich Site Summary)는 뉴스나 블로그 사이트에서 주로 사용하는 콘텐츠 표현 방식이다. 웹 사이트의 콘텐츠를 XML 파일로 작성해 블로그, 뉴스 등 RSS 피드를 통해 구독할 수 있게 되는데 이로 인해 새로운 콘텐츠가 나오면 새로운 소식 알림이 뜨게 되어 지속적으로 노출시킬 수 있다.'
 thumbnail: './gatsby-rss.png'
 ---
 

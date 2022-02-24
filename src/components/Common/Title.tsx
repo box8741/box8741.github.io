@@ -4,12 +4,12 @@ import styled from '@emotion/styled'
 const TitleWrapper = styled.div`
   display: flex;
   width: 768px;
-  margin: 60px auto 40px auto;
+  margin: 40px auto;
 
   @media (max-width: 768px) {
     width: 100%;
     padding: 0 20px;
-    margin: 40px auto 20px auto;
+    margin: 20px auto;
   }
 `
 

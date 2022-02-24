@@ -2,11 +2,9 @@
 date: '2022-02-08'
 title: 'vscode-styled-components extension 자동완성 버그 해결하기'
 categories: ['VSC', '삽질']
-summary: 'vscode-styled-components extension 자동완성 버그 발생 원인과 해결 방안에 대해서 알아보자.'
+summary: '문제 발생 어느 날 갑자기 컴퓨터를 켜서 작업하려고 하니 `styled-component` 자동완성이 안되는 문제가 발생했습니다.'
 thumbnail: './vscode-styled-component-bug.png'
 ---
-
-안녕하세요 오늘은 vscode-styled-components extension 자동완성 버그 발생 원인과 해결 방안에 대해서 알아보겠습니다.
 
 # 문제 발생
 

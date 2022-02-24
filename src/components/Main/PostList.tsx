@@ -21,10 +21,8 @@ const PostListWrapper = styled.div`
 `
 
 const PostListContent = styled.div`
-  padding: 50px 0;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  margin-bottom: 80px;
+  padding: 20px 0;
+  margin-bottom: 60px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
