@@ -28,6 +28,7 @@ const CategoryListWrapper = styled.div`
 
 const CategoryItem = styled(({ active, ...props }: CategoryItemProps) => <Link {...props} />)`
   margin-right: 14px;
+  margin-bottom: 12px;
   padding: 3px 12px;
   font-size: 14px;
   font-weight: bold;

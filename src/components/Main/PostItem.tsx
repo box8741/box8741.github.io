@@ -5,7 +5,10 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { PostFrontmatterType } from 'types/PostItem.types'
 
-type PostItemProps = PostFrontmatterType & { link: string }
+type PostItemProps = PostFrontmatterType & {
+  selectedCategory: string
+  link: string
+}
 
 const Title = styled.div`
   display: -webkit-box;
@@ -64,14 +67,14 @@ const Category = styled.div`
   margin: 10px -5px;
 `
 
-const CategoryItem = styled.div`
+const CategoryItem = styled.div<{ active: boolean }>`
   margin: 2.5px 5px;
   padding: 3px 8px;
   border-radius: 50px;
   font-size: 14px;
   font-weight: bold;
   color: var(--font-gray);
-  box-shadow: var(--shadow-btn-disabled);
+  box-shadow: ${({ active }) => (active ? 'var(--shadow-btn-enabled)' : 'var(--shadow-btn-disabled)')};
 `
 
 const Summary = styled.div`
@@ -95,6 +98,7 @@ const PostItem: FunctionComponent<PostItemProps> = ({
   thumbnail: {
     childImageSharp: { gatsbyImageData },
   },
+  selectedCategory,
   link,
 }) => {
   return (
@@ -105,7 +109,9 @@ const PostItem: FunctionComponent<PostItemProps> = ({
         <Date>{date}</Date>
         <Category>
           {categories.map(category => (
-            <CategoryItem key={category}>{category}</CategoryItem>
+            <CategoryItem key={category} active={category === selectedCategory}>
+              {category}
+            </CategoryItem>
           ))}
         </Category>
         <Summary>{summary}</Summary>

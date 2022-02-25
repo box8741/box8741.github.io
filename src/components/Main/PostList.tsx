@@ -50,7 +50,7 @@ const PostList: FunctionComponent<PostListProps> = ({ selectedCategory, posts })
               frontmatter,
             },
           }) => (
-            <PostItem {...frontmatter} key={id} link={slug} />
+            <PostItem {...frontmatter} selectedCategory={selectedCategory} key={id} link={slug} />
           ),
         )}
       </PostListContent>
