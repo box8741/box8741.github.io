@@ -2,6 +2,15 @@ import React, { FunctionComponent } from 'react'
 import { Global, css } from '@emotion/react'
 
 const defaultStyle = css`
+  :root {
+    --bg: #f2f2f2;
+    --font: #001f3f;
+    --font-gray: #a2a2a2;
+    --shadow-btn-hover: 1px 1px 2px #cecece, -1px -1px 2px #ffffff;
+    --shadow-btn-disabled: 3px 3px 4px #cecece, -3px -3px 4px #ffffff;
+    --shadow-btn-enabled: inset 3px 3px 4px #cecece, inset -3px -3px 4px #ffffff;
+  }
+
   @font-face {
     font-family: 'GowunDodum-Regular';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
@@ -19,6 +28,9 @@ const defaultStyle = css`
   html,
   body,
   #___gatsby {
+    background: var(--bg);
+    color: var(--font);
+
     ::-webkit-scrollbar-thumb {
       background: #333333;
       border-radius: 10px;

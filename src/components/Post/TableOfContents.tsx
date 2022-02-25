@@ -31,13 +31,13 @@ const TOCContent = styled.div<{ activeId: string }>`
   }
 
   a {
-    color: #888888;
+    color: var(--font-gray);
     font-size: 14px;
     transition: color 0.2s ease, font-size 0.2s ease;
   }
 
   a[href$='#${({ activeId }) => activeId}'] {
-    color: black;
+    color: var(--font);
     font-size: 15px;
     font-weight: 600;
   }

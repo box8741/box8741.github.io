@@ -36,7 +36,7 @@ const List = styled.div`
 
 const ListItem = styled(Link)`
   font-size: 18px;
-  font-weight: 400;
+  font-weight: bold;
   margin-right: 20px;
   cursor: pointer;
 

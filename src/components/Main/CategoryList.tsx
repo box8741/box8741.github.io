@@ -27,14 +27,21 @@ const CategoryListWrapper = styled.div`
 `
 
 const CategoryItem = styled(({ active, ...props }: CategoryItemProps) => <Link {...props} />)`
-  margin-right: 20px;
-  padding: 5px 0;
-  font-size: 15px;
-  font-weight: ${({ active }) => (active ? '800' : '400')};
+  margin-right: 14px;
+  padding: 3px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--font-gray);
   cursor: pointer;
+  border-radius: 50px;
+  box-shadow: ${({ active }) => (active ? 'var(--shadow-btn-enabled)' : 'var(--shadow-btn-disabled)')};
 
   &:last-of-type {
     margin-right: 0;
+  }
+  &:hover {
+    color: var(--font-gray);
+    box-shadow: ${({ active }) => !active && 'var(--shadow-btn-hover)'};
   }
 `
 
@@ -44,7 +51,7 @@ const CategoryList: FunctionComponent<CategoryListProps> = ({ selectedCategory, 
       {Object.entries(categoryList).map(([name, count]) => {
         return (
           <CategoryItem to={`/blog/?category=${name}`} active={name === selectedCategory} key={name}>
-            #{name}({count})
+            {name}({count})
           </CategoryItem>
         )
       })}

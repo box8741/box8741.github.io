@@ -18,6 +18,7 @@ const Title = styled.div`
   -webkit-box-orient: vertical;
   font-size: 20px;
   font-weight: 700;
+  color: var(--font);
 `
 
 const PostItemWrapper = styled(Link)`
@@ -65,12 +66,12 @@ const Category = styled.div`
 
 const CategoryItem = styled.div`
   margin: 2.5px 5px;
-  padding: 3px 5px;
-  border-radius: 3px;
-  background: black;
+  padding: 3px 8px;
+  border-radius: 50px;
   font-size: 14px;
-  font-weight: 700;
-  color: white;
+  font-weight: bold;
+  color: var(--font-gray);
+  box-shadow: var(--shadow-btn-disabled);
 `
 
 const Summary = styled.div`

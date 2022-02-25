@@ -66,7 +66,7 @@ const Category = styled.div`
 
 const Date = styled.div`
   font-size: 16px;
-  color: gray;
+  color: var(--font-gray);
 `
 
 const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = ({ title, date, categories }) => {

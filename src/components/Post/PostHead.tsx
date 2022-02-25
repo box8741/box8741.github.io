@@ -18,7 +18,6 @@ const PostHeadWrapper = styled.div`
 `
 
 const BackgroundImage = styled(GatsbyImage)`
-  z-index: -1;
   width: 100%;
   height: 400px;
   object-fit: cover;

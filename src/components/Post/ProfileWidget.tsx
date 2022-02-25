@@ -52,7 +52,7 @@ const IntroduceDescription = styled.div`
 
 const IntroduceDevelop = styled.div`
   font-size: 14px;
-  color: #aaaaaa;
+  color: var(--font-gray);
 `
 
 const ProfileWidget: FunctionComponent<ProfileWidgetProps> = ({ profileImage }) => {
