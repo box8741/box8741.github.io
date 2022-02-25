@@ -74,7 +74,7 @@ const CategoryItem = styled.div<{ active: boolean }>`
   font-size: 14px;
   font-weight: bold;
   color: var(--font-gray);
-  box-shadow: ${({ active }) => (active ? 'var(--shadow-btn-enabled)' : 'var(--shadow-btn-disabled)')};
+  box-shadow: ${({ active }) => (active ? 'var(--shadow-enabled)' : 'var(--shadow-disabled)')};
 `
 
 const Summary = styled.div`

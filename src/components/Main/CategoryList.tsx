@@ -35,14 +35,14 @@ const CategoryItem = styled(({ active, ...props }: CategoryItemProps) => <Link {
   color: var(--font-gray);
   cursor: pointer;
   border-radius: 50px;
-  box-shadow: ${({ active }) => (active ? 'var(--shadow-btn-enabled)' : 'var(--shadow-btn-disabled)')};
+  box-shadow: ${({ active }) => (active ? 'var(--shadow-enabled)' : 'var(--shadow-disabled)')};
 
   &:last-of-type {
     margin-right: 0;
   }
   &:hover {
     color: var(--font-gray);
-    box-shadow: ${({ active }) => !active && 'var(--shadow-btn-hover)'};
+    box-shadow: ${({ active }) => !active && 'var(--shadow-hover)'};
   }
 `
 

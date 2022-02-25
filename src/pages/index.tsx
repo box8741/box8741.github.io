@@ -5,7 +5,7 @@ import { useSiteMetadata } from 'hooks/useSiteMetadata'
 import Layout from 'components/Common/Layout'
 import PageTemplate from 'components/Common/PageTemplate'
 import Introduction from 'components/Main/Introduction'
-import PostList from 'components/Main/PostList'
+import PreviewPostList from 'components/Main/PreviewPostList'
 
 import { PostListItemType } from 'types/PostItem.types'
 
@@ -37,7 +37,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = ({
     <Layout title={title} description={description} url={siteUrl} image={publicURL}>
       <PageTemplate>
         <Introduction profileImage={gatsbyImageData} />
-        <PostList selectedCategory={'All'} posts={edges} />
+        <PreviewPostList posts={edges} />
       </PageTemplate>
     </Layout>
   )

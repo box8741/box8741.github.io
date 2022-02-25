@@ -4,11 +4,14 @@ import { Global, css } from '@emotion/react'
 const defaultStyle = css`
   :root {
     --bg: #f2f2f2;
+    --bg-gray: #e2e2e2;
     --font: #001f3f;
     --font-gray: #a2a2a2;
-    --shadow-btn-hover: 1px 1px 2px #cecece, -1px -1px 2px #ffffff;
-    --shadow-btn-disabled: 3px 3px 4px #cecece, -3px -3px 4px #ffffff;
-    --shadow-btn-enabled: inset 3px 3px 4px #cecece, inset -3px -3px 4px #ffffff;
+    --shadow-hover: 1px 1px 2px #cecece, -1px -1px 2px #ffffff;
+    --shadow-disabled: 3px 3px 4px #cecece, -3px -3px 4px #ffffff;
+    --shadow-enabled: inset 3px 3px 4px #cecece, inset -3px -3px 4px #ffffff;
+    --shadow-gray-hover: 1px 1px 2px #c0c0c0, -1px -1px 2px #ffffff;
+    --shadow-gray-disabled: 3px 3px 4px #c0c0c0, -3px -3px 4px #ffffff;
   }
 
   @font-face {
