@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import Logo from 'components/Common/Logo'
+import ThemeButton from 'components/Common/ThemeButton'
 
 const HeaderWrapper = styled.header`
   min-height: 100px;
@@ -53,6 +54,7 @@ const Header = () => {
     <HeaderWrapper>
       <HeaderContent>
         <Logo>Developer Min</Logo>
+        <ThemeButton />
         <List>
           <ListItem to="/blog">Blog</ListItem>
         </List>

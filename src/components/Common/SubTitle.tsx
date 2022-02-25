@@ -17,7 +17,7 @@ const SubTitleWrapper = styled.div`
 const SubTitleText = styled.span`
   font-size: 36px;
   font-weight: bold;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid var(--border);
   padding-bottom: 4px;
 
   @media (max-width: 768px) {

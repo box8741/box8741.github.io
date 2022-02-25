@@ -30,14 +30,14 @@ const AnotherPageWrapper = styled.div`
 `
 
 const PostItemWrapper = styled(Link)`
-  border: 1px solid #cccccc;
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 8px;
   cursor: pointer;
   transition: box-shadow 0.2s ease;
 
   &:hover {
-    box-shadow: 4px 4px 8px #cccccc;
+    box-shadow: var(--shadow-default);
   }
 
   @media (max-width: 768px) {

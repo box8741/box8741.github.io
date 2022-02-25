@@ -27,12 +27,12 @@ const Title = styled.div`
 const PostItemWrapper = styled(Link)`
   display: flex;
   padding: 16px;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid var(--border);
   cursor: pointer;
 
   &:last-of-type {
     margin-bottom: 0;
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid var(--border);
   }
   &:hover ${Title} {
     text-decoration: underline;

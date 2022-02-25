@@ -22,7 +22,7 @@ const BackgroundImage = styled(GatsbyImage)`
   height: 400px;
   object-fit: cover;
   background: #333333;
-  box-shadow: 0 0 8px #333333;
+  box-shadow: var(--shadow-default);
 
   @media (max-width: 768px) {
     height: 300px;

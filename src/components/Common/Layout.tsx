@@ -14,6 +14,8 @@ type LayoutProps = {
 
 const LayoutWrapper = styled.div`
   min-height: 100vh;
+  background: var(--bg);
+  color: var(--font);
 `
 
 // title, description, url, image, children

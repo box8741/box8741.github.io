@@ -42,7 +42,7 @@ const Title = styled.div`
 
 const HorizonLine = styled.div`
   height: 1px;
-  background: #cccccc;
+  background: var(--border);
   width: 100px;
   margin: 20px auto;
 `

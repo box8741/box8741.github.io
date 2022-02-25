@@ -19,7 +19,7 @@ const TOCWrapper = styled.div`
 const TOCContent = styled.div<{ activeId: string }>`
   position: sticky;
   top: 200px;
-  border-left: 3px solid #aaaaaa;
+  border-left: 3px solid var(--border);
   padding: 12px;
 
   li {

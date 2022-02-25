@@ -26,6 +26,9 @@ const CommentWidget: FunctionComponent = () => {
   useEffect(() => {
     if (element.current === null) return
 
+    const prefersColorScheme = window.matchMedia('prefers-color-scheme: dark').matches ? 'dark' : 'light'
+    const theme = localStorage.getItem('theme') || prefersColorScheme
+
     const utterances: HTMLScriptElement = document.createElement('script')
 
     const attributes: UtterancesAttributesType = {
@@ -33,7 +36,7 @@ const CommentWidget: FunctionComponent = () => {
       repo,
       'issue-term': 'title',
       label: 'Comment',
-      theme: `github-light`,
+      theme: `github-${theme}`,
       crossorigin: 'anonymous',
       async: 'true',
     }

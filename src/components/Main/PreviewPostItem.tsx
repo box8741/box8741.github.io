@@ -15,9 +15,9 @@ const PreviewPostItemWrapper = styled(Link)`
   grid-gap: 12px;
   margin-bottom: 16px;
   padding: 16px;
-  border-radius: 12px;
+  border-radius: 6px;
   background: var(--bg);
-  box-shadow: 0 0 8px #bbbbbb;
+  box-shadow: var(--shadow-default);
 
   &:last-of-type {
     margin-bottom: 0;

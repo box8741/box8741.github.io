@@ -45,7 +45,7 @@ const MarkdownRenderer = styled.div`
   blockquote {
     margin: 30px 0;
     padding: 5px 15px;
-    border-left: 2px solid #000000;
+    border-left: 2px solid var(--border);
     font-weight: 800;
   }
 
@@ -56,7 +56,7 @@ const MarkdownRenderer = styled.div`
   }
 
   hr {
-    border: 1px solid #000000;
+    border: 1px solid var(--border);
     margin: 100px 0;
   }
 
@@ -66,12 +66,10 @@ const MarkdownRenderer = styled.div`
   }
 
   img {
-    border-radius: 6px;
   }
   p > span[class='gatsby-resp-image-wrapper'] {
     margin: 30px 0;
-    box-shadow: 0 0 8px #aaaaaa;
-    border-radius: 6px;
+    box-shadow: var(--shadow-default);
   }
 
   pre[class*='language-'] {
@@ -79,7 +77,7 @@ const MarkdownRenderer = styled.div`
     padding: 15px;
     font-size: 15px;
     border-radius: 6px;
-    box-shadow: 0 0 8px #aaaaaa;
+    box-shadow: var(--shadow-default);
 
     ::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.5);
@@ -92,7 +90,7 @@ const MarkdownRenderer = styled.div`
   p:not(pre) > code[class='language-text'],
   li:not(pre) > code[class='language-text'] {
     font-size: 14px;
-    background: rgba(0, 0, 0, 0.04);
+    background: var(--bg-gray);
     color: #e91e63;
     padding: 3px 5px;
   }
