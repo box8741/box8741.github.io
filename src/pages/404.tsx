@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import { PageProps } from 'gatsby'
 import Layout from 'components/Common/Layout'
-import GlobalStyle from 'components/Common/GlobalStyle'
+import PageTemplate from 'components/Common/PageTemplate'
 
 type NotFoundPageProps = PageProps & {}
 
@@ -48,12 +48,13 @@ const NotFoundDescription = styled.div`
 const NotFoundPage: FunctionComponent<NotFoundPageProps> = () => {
   return (
     <Layout>
-      <GlobalStyle />
-      <NotFoundPageWrapper>
-        <NotFoundText>404</NotFoundText>
-        <NotFoundTitle>페이지를 찾을 수 없습니다.</NotFoundTitle>
-        <NotFoundDescription>올바른 URL을 입력했는지 확인해주세요.</NotFoundDescription>
-      </NotFoundPageWrapper>
+      <PageTemplate>
+        <NotFoundPageWrapper>
+          <NotFoundText>404</NotFoundText>
+          <NotFoundTitle>페이지를 찾을 수 없습니다.</NotFoundTitle>
+          <NotFoundDescription>올바른 URL을 입력했는지 확인해주세요.</NotFoundDescription>
+        </NotFoundPageWrapper>
+      </PageTemplate>
     </Layout>
   )
 }

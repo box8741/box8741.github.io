@@ -1,8 +1,9 @@
 import React, { createRef, FunctionComponent, useEffect } from 'react'
 import styled from '@emotion/styled'
 
-const src = 'https://utteranc.es/client.js'
+const src = 'https://utteranc.es'
 const repo = 'box8741/box8741.github.io'
+const utterancesSelector = 'iframe.utterances-frame'
 
 type UtterancesAttributesType = {
   src: string
@@ -21,10 +22,10 @@ const UtteranceWrapper = styled.div`
 `
 
 const CommentWidget: FunctionComponent = () => {
-  const element = createRef<HTMLDivElement>()
+  const containerRef = createRef<HTMLDivElement>()
 
   useEffect(() => {
-    if (element.current === null) return
+    if (containerRef.current === null) return
 
     const prefersColorScheme = window.matchMedia('prefers-color-scheme: dark').matches ? 'dark' : 'light'
     const theme = localStorage.getItem('theme') || prefersColorScheme
@@ -32,7 +33,7 @@ const CommentWidget: FunctionComponent = () => {
     const utterances: HTMLScriptElement = document.createElement('script')
 
     const attributes: UtterancesAttributesType = {
-      src,
+      src: `${src}/client.js`,
       repo,
       'issue-term': 'title',
       label: 'Comment',
@@ -44,11 +45,39 @@ const CommentWidget: FunctionComponent = () => {
     Object.entries(attributes).forEach(([key, value]) => {
       utterances.setAttribute(key, value)
     })
+    containerRef.current.appendChild(utterances)
 
-    element.current.appendChild(utterances)
+    const changeUtterances = (theme: string) => {
+      const utterances = document.querySelector<HTMLIFrameElement>(utterancesSelector)
+      if (utterances === null || utterances.contentWindow === null) return
+      utterances.contentWindow.postMessage(
+        {
+          type: 'set-theme',
+          theme: `github-${theme}`,
+        },
+        src,
+      )
+    }
+
+    const observer = new MutationObserver(() => {
+      const currentMode = document.body.classList.contains('light') ? 'light' : 'dark'
+      changeUtterances(currentMode)
+    })
+
+    observer.observe(window.document.body, {
+      childList: false,
+      subtree: false,
+      attributes: true,
+      attributeFilter: ['class'],
+      characterData: false,
+      attributeOldValue: false,
+      characterDataOldValue: false,
+    })
+
+    return () => observer.disconnect()
   }, [])
 
-  return <UtteranceWrapper ref={element} />
+  return <UtteranceWrapper ref={containerRef} />
 }
 
 export default CommentWidget
