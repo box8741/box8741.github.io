@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 
-const ThemeButtonWrapper = styled.div`
+const ThemeButtonWrapper = styled.div<{ active: boolean }>`
+  display: grid;
+  place-items: center;
   width: 40px;
   height: 40px;
-  background: red;
   border-radius: 50%;
+  box-shadow: ${({ active }) => (active ? 'var(--shadow-enabled)' : 'var(--shadow-disabled)')};
+  cursor: pointer;
 `
 
 const ThemeButton = () => {
@@ -22,7 +25,11 @@ const ThemeButton = () => {
     setTheme(currentTheme)
   }
 
-  return <ThemeButtonWrapper onClick={handleTheme}></ThemeButtonWrapper>
+  return (
+    <ThemeButtonWrapper onClick={handleTheme} active={theme === 'light'}>
+      {theme === 'dark' ? '🌑' : '🌕'}
+    </ThemeButtonWrapper>
+  )
 }
 
 export default ThemeButton

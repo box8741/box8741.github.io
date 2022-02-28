@@ -29,6 +29,7 @@ const HeaderContent = styled.div`
 
 const List = styled.div`
   display: flex;
+  align-items: center;
 
   @media (max-width: 768px) {
     margin-top: 8px;
@@ -41,9 +42,6 @@ const ListItem = styled(Link)`
   margin-right: 20px;
   cursor: pointer;
 
-  &:last-of-type {
-    margin-right: 0;
-  }
   &:hover {
     opacity: 0.7;
   }
@@ -54,9 +52,10 @@ const Header = () => {
     <HeaderWrapper>
       <HeaderContent>
         <Logo>Developer Min</Logo>
-        <ThemeButton />
         <List>
+          <ListItem to="/">Home</ListItem>
           <ListItem to="/blog">Blog</ListItem>
+          <ThemeButton />
         </List>
       </HeaderContent>
     </HeaderWrapper>

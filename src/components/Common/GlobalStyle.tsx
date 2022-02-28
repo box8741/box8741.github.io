@@ -9,6 +9,11 @@ const defaultStyle = css`
     font-style: normal;
   }
 
+  ::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -32,6 +37,18 @@ const defaultStyle = css`
       --shadow-hover: 1px 1px 2px #cecece, -1px -1px 2px #ffffff;
       --shadow-disabled: 3px 3px 4px #cecece, -3px -3px 4px #ffffff;
       --shadow-enabled: inset 3px 3px 4px #cecece, inset -3px -3px 4px #ffffff;
+
+      ::-webkit-scrollbar-thumb {
+        background: #2f3135;
+        border-radius: 10px;
+        background-clip: padding-box;
+        border: 2px solid transparent;
+      }
+      ::-webkit-scrollbar {
+        background: #f2f2f2;
+        height: 12px;
+        width: 12px;
+      }
     }
 
     &.dark {
@@ -44,6 +61,18 @@ const defaultStyle = css`
       --shadow-hover: 1px 1px 2px #282a2d, -1px -1px 2px #36383d;
       --shadow-disabled: 3px 3px 4px #282a2d, -3px -3px 4px #36383d;
       --shadow-enabled: inset 3px 3px 4px #282a2d, inset -3px -3px 4px #36383d;
+
+      ::-webkit-scrollbar-thumb {
+        background: #f2f2f2;
+        border-radius: 10px;
+        background-clip: padding-box;
+        border: 2px solid transparent;
+      }
+      ::-webkit-scrollbar {
+        background: #2f3135;
+        height: 12px;
+        width: 12px;
+      }
     }
   }
 
@@ -52,17 +81,6 @@ const defaultStyle = css`
     color: inherit;
     text-decoration: none;
     cursor: pointer;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #333333;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-  }
-  ::-webkit-scrollbar {
-    height: 12px;
-    width: 12px;
   }
 `
 
