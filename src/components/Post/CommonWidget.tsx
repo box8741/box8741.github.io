@@ -59,9 +59,9 @@ const CommentWidget: FunctionComponent = () => {
       )
     }
 
-    const observer = new MutationObserver(() => {
-      const currentMode = document.body.classList.contains('light') ? 'light' : 'dark'
-      changeUtterances(currentMode)
+    const observer = new MutationObserver(([mutation]) => {
+      const { className } = mutation.target as Element
+      changeUtterances(className)
     })
 
     observer.observe(window.document.body, {
