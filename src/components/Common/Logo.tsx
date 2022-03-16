@@ -7,6 +7,7 @@ type LogoProps = {}
 const LogoWrapper = styled(Link)`
   font-size: 26px;
   font-weight: 900;
+  color: var(--font);
 `
 
 const Logo: FunctionComponent<LogoProps> = ({ children }) => {

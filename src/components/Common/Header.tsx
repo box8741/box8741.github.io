@@ -40,6 +40,7 @@ const ListItem = styled(Link)`
   font-size: 18px;
   font-weight: bold;
   margin-right: 20px;
+  color: var(--font);
   cursor: pointer;
 
   &:hover {
@@ -53,7 +54,6 @@ const Header = () => {
       <HeaderContent>
         <Logo>Developer Min</Logo>
         <List>
-          <ListItem to="/">Home</ListItem>
           <ListItem to="/blog">Blog</ListItem>
           <ThemeButton />
         </List>
