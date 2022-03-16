@@ -87,7 +87,7 @@ export const getPostList = graphql`
             categories
             thumbnail {
               childImageSharp {
-                gatsbyImageData(width: 180, height: 180)
+                gatsbyImageData(transformOptions: { fit: OUTSIDE }, width: 180, height: 180)
               }
             }
           }

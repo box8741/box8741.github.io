@@ -61,7 +61,7 @@ export const getIndexData = graphql`
             categories
             thumbnail {
               childImageSharp {
-                gatsbyImageData(width: 65, height: 65)
+                gatsbyImageData(transformOptions: { fit: OUTSIDE }, width: 65, height: 65)
               }
             }
           }

@@ -40,8 +40,6 @@ const PostItemWrapper = styled(Link)`
 `
 
 const ThumbnailImage = styled(GatsbyImage)`
-  width: 180px;
-
   @media (max-width: 768px) {
     display: none;
   }

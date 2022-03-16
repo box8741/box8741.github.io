@@ -4,7 +4,7 @@ title: 'SPA(Single Page Application) vs MPA(Multi Page Application)'
 categories: ['SPA', 'MPA']
 summary: 'SPA(Single Page Application)는 한 개의 페이지로 구성된 애플리케이션이고
 MPA(Multi Page Application)는 여러 개의 페이지로 구성된 애플리케이션입니다.'
-thumbnail: './gatsby-rss.png'
+thumbnail: './spa-vs-mpa.png'
 ---
 
 # SPA / MPA 정의
