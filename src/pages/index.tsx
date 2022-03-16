@@ -47,7 +47,7 @@ export default IndexPage
 
 export const getIndexData = graphql`
   query getIndexData {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }) {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }, limit: 5) {
       edges {
         node {
           id
