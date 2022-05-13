@@ -1,8 +1,8 @@
 ---
 date: '2022-05-12'
 title: 'RESR API란?'
-categories: ['API']
-summary: 'REST API(RESTful API)란 REST 아키텍처의 제약 조건을 준수한다는 애플리케이션 프로그래밍 인터페이스(API)를 뜻합니다.'
+categories: ['CS', 'API']
+summary: 'API는 애플리케이션 프로그래밍 인터페이스 라는 뜻으로 응용 프로그램에서 사용할 수 있도록 운영 체제나 프로그래밍 언어가 제공하는 기능을 제어할 수 있도록 만든 인터페이스를 뜻한다.'
 thumbnail: './rest-api.png'
 ---
 
