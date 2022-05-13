@@ -1,4 +1,131 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[개발자들 사이에서 한 번쯤 들어봤을 만한 사람이 되기위해]]></description><link>https://box8741.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 12 May 2022 05:36:47 GMT</lastBuildDate><item><title><![CDATA[RESR API란?]]></title><description><![CDATA[REST API(RESTful API)란 REST 아키텍처의 제약 조건을 준수한다는 애플리케이션 프로그래밍 인터페이스(API)를 뜻합니다.]]></description><link>https://box8741.github.io/2022-05-12/rest-api/</link><guid isPermaLink="false">https://box8741.github.io/2022-05-12/rest-api/</guid><pubDate>Thu, 12 May 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;요약&quot; style=&quot;position:relative;&quot;&gt;요약&lt;a href=&quot;#%EC%9A%94%EC%95%BD&quot; aria-label=&quot;요약 permalink&quot; class=&quot;custom-class after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[개발자들 사이에서 한 번쯤 들어봤을 만한 사람이 되기위해]]></description><link>https://box8741.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 13 May 2022 05:42:50 GMT</lastBuildDate><item><title><![CDATA[자바스크립트의 이벤트 루프(Event Loop)란?]]></title><description><![CDATA[이벤트 루프(Event Loop)를 설명하기 앞서 JavaScript의 특징부터 알고 가야 합니다.
+JavaScript는 싱글쓰레드 언어라고 많이 알려져 있습니다. 싱글쓰레드라고 한다면 여러 개의 작업이 있더라도 한 번에 하나의 작업만 수행할 수 있습니다. 하지만 JavaScript를 사용해 보면 멀티쓰레드처럼 동시에 여러 작업을 수행할 수 있다는 것을 알 수 있습니다. 그렇다면 JavaScript는 정말 싱글쓰레드 언어가 맞을까요?]]></description><link>https://box8741.github.io/2022-05-13/event-loop/</link><guid isPermaLink="false">https://box8741.github.io/2022-05-13/event-loop/</guid><pubDate>Fri, 13 May 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;이벤트 루프(Event Loop)&lt;/code&gt;를 설명하기 앞서 &lt;code class=&quot;language-text&quot;&gt;JavaScript&lt;/code&gt;의 특징부터 알고 가야 합니다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;JavaScript&lt;/code&gt;는 싱글쓰레드 언어라고 많이 알려져 있습니다. 싱글쓰레드라고 한다면 여러 개의 작업이 있더라도 한 번에 하나의 작업만 수행할 수 있습니다. 하지만 &lt;code class=&quot;language-text&quot;&gt;JavaScript&lt;/code&gt;를 사용해 보면 멀티쓰레드처럼 동시에 여러 작업을 수행할 수 있다는 것을 알 수 있습니다. 그렇다면 &lt;code class=&quot;language-text&quot;&gt;JavaScript&lt;/code&gt;는 정말 싱글쓰레드 언어가 맞을까요?&lt;/p&gt;
+&lt;h1 id=&quot;javascript는-싱글-쓰레드언어가-맞을까&quot; style=&quot;position:relative;&quot;&gt;JavaScript는 싱글 쓰레드언어가 맞을까?&lt;a href=&quot;#javascript%EB%8A%94-%EC%8B%B1%EA%B8%80-%EC%93%B0%EB%A0%88%EB%93%9C%EC%96%B8%EC%96%B4%EA%B0%80-%EB%A7%9E%EC%9D%84%EA%B9%8C&quot; aria-label=&quot;javascript는 싱글 쓰레드언어가 맞을까 permalink&quot; class=&quot;custom-class after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;결론부터 말씀드리자면 맞습니다. 그 이유는 JavaScript의 메인쓰레드인 &lt;strong&gt;이벤트 루프&lt;/strong&gt;가 싱글 쓰레드이기 때문입니다. 하지만 &lt;strong&gt;이벤트 루프&lt;/strong&gt;만 독립적으로 실행되는것이 아닌 웹 브라우저나 NodeJS 같은 멀티쓰레드 환경에서 실행되고 이를 적절하게 사용함으로써 멀티쓰레드처럼 사용이 가능한 것입니다.&lt;/p&gt;
+&lt;h1 id=&quot;javascript-동작-과정&quot; style=&quot;position:relative;&quot;&gt;JavaScript 동작 과정&lt;a href=&quot;#javascript-%EB%8F%99%EC%9E%91-%EA%B3%BC%EC%A0%95&quot; aria-label=&quot;javascript 동작 과정 permalink&quot; class=&quot;custom-class after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/140f4d1b1341ebebf5a08daa184b6545/42a19/event-loop2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAACmklEQVQ4y5VTPZPSUBTN7/AnWfgH1NHKxnFmLSxdLbRxLWx2K0dLK0sbd4CFJAshIUBCguDirKNLSAgksHyEEN5x7gOyqGvhm7nzvpLzzrn3XAH/MRhj6Xq1YthuaV7vGYT5fA7XdeF53iZ8uJ4Pz+vvnHmIoigFvQJOALZYz5shFItFlEolNBoN1OsGjLoGu1GGUa/wvWmaUFUV5XJ5w2xFsHDcFUw7hKp3YX0Z4dv3BOPLFQT6eLFYpC8s/LfoaPcRDT7syFtx0K08Gs9fB7h1z8PdRz5uP+zj5p0esvJ8DTgej9Ofz/Q9HL64ga/6/gYswXQ6RaVSge/7qNZqcN0uPn6K8OxgiFdHIQ6OQrx8E8JsLiCQlMlkkgJGYR6T3jvEE+XqLIqgaRpfx/GSnsHh+zEePPGx93SAx/sDvlb0CAK9TEXpXvzE+fk5wtGM/zidxWg2m2i32wiCgDPclazVIxznZ8jJcx6f8zNcOMu15Gw2B6mow6gZEMUCptNLlEpFWJYN27aRy+Wg6/o1Vf57CLIsIZsXceYCpbCIjHIM3xvAsqz0o0KhsFMUlvowSX4P7kNZklCk/HR/YNauoWKb8L0+Z9Tr9eA4DjFkG8mMbRDZNTQ5oCRJKJUVjPwZMEtgNhro9/uoVqvc0JRfkqyqKsdIkiQFi+MYy+WSxxZfECUZmipD1hIEE8A0q3BdjxeBgAk0k8kwRVFozxzHYQRAhOieVFBsnSJQl1CObMuA1TBBnUPteHp6ik0XsWw2y4hxp9NhhmFwwGazyVqtFts6wTAM7lOBciWKIkRRQj6f5y1Wq9V4O56cnPAzSZIIiAzORqMRI9lBEDCK4XCIMAw5GBERqK3IuJQPClrTBbUjMdme/VGEf/rmF31wTd3AVy7ZAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/140f4d1b1341ebebf5a08daa184b6545/a59e9/event-loop2.webp 192w,
+/static/140f4d1b1341ebebf5a08daa184b6545/0ca9f/event-loop2.webp 384w,
+/static/140f4d1b1341ebebf5a08daa184b6545/dc9b9/event-loop2.webp 768w,
+/static/140f4d1b1341ebebf5a08daa184b6545/d71bc/event-loop2.webp 1024w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/140f4d1b1341ebebf5a08daa184b6545/3b721/event-loop2.png 192w,
+/static/140f4d1b1341ebebf5a08daa184b6545/66595/event-loop2.png 384w,
+/static/140f4d1b1341ebebf5a08daa184b6545/fe486/event-loop2.png 768w,
+/static/140f4d1b1341ebebf5a08daa184b6545/42a19/event-loop2.png 1024w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/140f4d1b1341ebebf5a08daa184b6545/fe486/event-loop2.png&quot;
+            alt=&quot;event loop img2&quot;
+            title=&quot;event loop img2&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;출처 : &lt;a href=&quot;https://blog.sessionstack.com/how-does-JavaScript-actually-work-part-1-b0bacc073cf&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;How JavaScript works: an overview of the engine, the runtime, and the call stack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;사진만 봤을 때는 이해가 잘 가지 않습니다 하나씩 정리해가며 알아보도록 하겠습니다.&lt;/p&gt;
+&lt;h2 id=&quot;js-engine&quot; style=&quot;position:relative;&quot;&gt;JS Engine&lt;a href=&quot;#js-engine&quot; aria-label=&quot;js engine permalink&quot; class=&quot;custom-class after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/44b6caf27337a5f2d63eee2a214696c3/42a19/event-loop3.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsTAAALEwEAmpwYAAABj0lEQVQoz5WSX0/iQBTF/Uq+b/yU7voBjC/70oTILgrECDuGWCxiExYsbacz06aUNpD+QzqduSY0IZpI2T1vc+785pybzAkclpQgZM0cTr6kAKDcuvJtIN8GoljszX+ApQAAvv6pts7ulW88bu3NI7CUUggOAIl/dXl+evX9NI+uAUCI8ggsd6oa8uw5X/zYBBc8m3wYyrrkPM/jOEmzNE3zyimKYrVardfrsizrksuyfHhA3fbv3l3vtnWTJHGSxO32bbPZbDQa/X5/u91WHT7B1dlzWQ89/mXgpS56+kMwsWxrNptVd0ajEaW0BnZVbRzG0A8711ojYAF28GQy4ZwLITRNc133IMwoHU+nEHgwfDIcB9s2IURV1SAIlsslQsjzvMMwY8/j8W57/mq8YowJIcPhMAzDKIoQQnXJhLLZ9OXXHSwicLBhY+w4jq7rWZZtNhtVVetg3/c7nbaum4Zhd7sde1dbUZTBToqi+L7/Bbx/gjGG7bltmaZpFkXBObcsaz6fG4ZBKT3ySf5L77FmT6l1J127AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/44b6caf27337a5f2d63eee2a214696c3/a59e9/event-loop3.webp 192w,
+/static/44b6caf27337a5f2d63eee2a214696c3/0ca9f/event-loop3.webp 384w,
+/static/44b6caf27337a5f2d63eee2a214696c3/dc9b9/event-loop3.webp 768w,
+/static/44b6caf27337a5f2d63eee2a214696c3/d71bc/event-loop3.webp 1024w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/44b6caf27337a5f2d63eee2a214696c3/3b721/event-loop3.png 192w,
+/static/44b6caf27337a5f2d63eee2a214696c3/66595/event-loop3.png 384w,
+/static/44b6caf27337a5f2d63eee2a214696c3/fe486/event-loop3.png 768w,
+/static/44b6caf27337a5f2d63eee2a214696c3/42a19/event-loop3.png 1024w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/44b6caf27337a5f2d63eee2a214696c3/fe486/event-loop3.png&quot;
+            alt=&quot;event loop img3&quot;
+            title=&quot;event loop img3&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;출처 : &lt;a href=&quot;https://blog.sessionstack.com/how-does-JavaScript-actually-work-part-1-b0bacc073cf&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;How JavaScript works: an overview of the engine, the runtime, and the call stack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;JavaScript 엔진은 코드를 이해하고 실행을 도와주는 역할을 합니다. 그중에서도 가장 대표적인 엔진으로는 Google의 V8 엔진입니다. 이외에도 각 브라우저 별로 여러 가지 엔진들이 존재하지만 JavaScript 엔진은 크게 &lt;code class=&quot;language-text&quot;&gt;Memory Heap&lt;/code&gt;과 &lt;code class=&quot;language-text&quot;&gt;Call Stack&lt;/code&gt;으로 이루어져 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Memory Heap : 메모리 할당이 일어나는 장소&lt;/li&gt;
+&lt;li&gt;Call Stack : 코드가 실행될 경우 하나씩 stack의 형태로 쌓이는 장소&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;memory-heap--call-stack&quot; style=&quot;position:relative;&quot;&gt;Memory Heap &amp;#x26; Call Stack&lt;a href=&quot;#memory-heap--call-stack&quot; aria-label=&quot;memory heap  call stack permalink&quot; class=&quot;custom-class after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;먼저 &lt;code class=&quot;language-text&quot;&gt;Memory Heap&lt;/code&gt;에 있는 사용자가 작성한 코드들은 &lt;code class=&quot;language-text&quot;&gt;Call Stack&lt;/code&gt;에서 &lt;code class=&quot;language-text&quot;&gt;Stack&lt;/code&gt; 방식으로 쌓이며 코드를 실행하게 되는데 이때 동기 함수들은 그대로 실행하게 되고 비동기 함수들은 &lt;code class=&quot;language-text&quot;&gt;Web API&lt;/code&gt;로 처리하게 되며 일을 분배합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Stack : 후입선출(LIFO)로 마지막에 들어간 것이 먼저 나가는 방식&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;web-api&quot; style=&quot;position:relative;&quot;&gt;Web API&lt;a href=&quot;#web-api&quot; aria-label=&quot;web api permalink&quot; class=&quot;custom-class after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Javscript를 사용하면서 우리가 많이 사용하는 API 들은 사실 JavaScript에서 지원하는 것이 아닌 웹 브라우저에서 제공하는 API로 &lt;code class=&quot;language-text&quot;&gt;DOM&lt;/code&gt; ,&lt;code class=&quot;language-text&quot;&gt;AJAX&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;Timeout&lt;/code&gt; 등이 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Call Stack&lt;/code&gt;에서 실행된 비동기 함수는 &lt;code class=&quot;language-text&quot;&gt;Web API&lt;/code&gt;에서 처리를 하게 되고 그동안에 &lt;code class=&quot;language-text&quot;&gt;Call Stack&lt;/code&gt;은 나머지 동기 함수들을 처리하게 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Web API&lt;/code&gt;는 비동기 함수들을 처리하며 작업이 완료된 비동기 함수들을 &lt;code class=&quot;language-text&quot;&gt;Callback Queue&lt;/code&gt;로 넘겨주게 됩니다.&lt;/p&gt;
+&lt;h2 id=&quot;callback-queue&quot; style=&quot;position:relative;&quot;&gt;Callback Queue&lt;a href=&quot;#callback-queue&quot; aria-label=&quot;callback queue permalink&quot; class=&quot;custom-class after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Callback Queue&lt;/code&gt;는 비동기 함수들을 보관하는 장소로 &lt;code class=&quot;language-text&quot;&gt;Event Loop&lt;/code&gt;에서 비동기 함수를 꺼내기 전까지는 계속 &lt;code class=&quot;language-text&quot;&gt;Queue&lt;/code&gt;방식으로 보관하게 됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Queue : 선입선출(FIFO)로 먼저 들어간 것이 먼저 나가는 방식&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;event-loop&quot; style=&quot;position:relative;&quot;&gt;Event Loop&lt;a href=&quot;#event-loop&quot; aria-label=&quot;event loop permalink&quot; class=&quot;custom-class after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Event Loop&lt;/code&gt;는 &lt;code class=&quot;language-text&quot;&gt;Call Stack&lt;/code&gt;과 &lt;code class=&quot;language-text&quot;&gt;Callback Queue&lt;/code&gt;를 상태를 계속 감시하며 &lt;code class=&quot;language-text&quot;&gt;Call Stack&lt;/code&gt;에 함수들이 존재하지 않는다면 &lt;code class=&quot;language-text&quot;&gt;Callback Queue&lt;/code&gt;에 있는 비동기 함수들을 &lt;code class=&quot;language-text&quot;&gt;Call Stack&lt;/code&gt;에 밀어 넣게 됩니다. 그 후 &lt;code class=&quot;language-text&quot;&gt;Call Stack&lt;/code&gt;에서 비동기 함수를 실행시키게 됩니다.&lt;/p&gt;
+&lt;h2 id=&quot;참고-영상&quot; style=&quot;position:relative;&quot;&gt;참고 영상&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0-%EC%98%81%EC%83%81&quot; aria-label=&quot;참고 영상 permalink&quot; class=&quot;custom-class after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;iframe width=&quot;640&quot; height=&quot;360&quot; src=&quot;https://www.youtube.com/embed/8aGhZQkoFbQ&quot; frameborder=&quot;0&quot; gesture=&quot;media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;h1 id=&quot;참고-자료&quot; style=&quot;position:relative;&quot;&gt;참고 자료&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C&quot; aria-label=&quot;참고 자료 permalink&quot; class=&quot;custom-class after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://chanyeong.com/blog/post/44&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;자바스크립트는 왜 싱글 쓰레드일까?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.toycrane.xyz/%EC%A7%84%EC%A7%9C-%EC%89%BD%EA%B2%8C-%EC%95%8C%EC%95%84%EB%B3%B4%EB%8A%94-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC-c7fbdc44cc97&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;진짜 ! 쉽게 알아보는 자바스크립트 동작 원리&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://velog.io/@thms200/Event-Loop-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A3%A8%ED%94%84&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;Event Loop (이벤트 루프)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.sessionstack.com/how-does-JavaScript-actually-work-part-1-b0bacc073cf&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;How JavaScript works: an overview of the engine, the runtime, and the call stack&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[RESR API란?]]></title><description><![CDATA[API는 애플리케이션 프로그래밍 인터페이스 라는 뜻으로 응용 프로그램에서 사용할 수 있도록 운영 체제나 프로그래밍 언어가 제공하는 기능을 제어할 수 있도록 만든 인터페이스를 뜻한다.]]></description><link>https://box8741.github.io/2022-05-12/rest-api/</link><guid isPermaLink="false">https://box8741.github.io/2022-05-12/rest-api/</guid><pubDate>Thu, 12 May 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;요약&quot; style=&quot;position:relative;&quot;&gt;요약&lt;a href=&quot;#%EC%9A%94%EC%95%BD&quot; aria-label=&quot;요약 permalink&quot; class=&quot;custom-class after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;20&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;20&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;API는 &lt;strong&gt;애플리케이션 프로그래밍 인터페이스&lt;/strong&gt; 라는 뜻으로 응용 프로그램에서 사용할 수 있도록 운영 체제나 프로그래밍 언어가 제공하는 기능을 제어할 수 있도록 만든 인터페이스를 뜻한다.&lt;/p&gt;
 &lt;p&gt;REST API(RESTful API)란 REST 아키텍처의 제약 조건을 준수한다는 애플리케이션 프로그래밍 인터페이스(API)를 뜻합니다.&lt;/p&gt;
 &lt;p&gt;쉽게 말해 REST API는 애플리케이션을 서로 연결하여 통신할 수 있도록 하는 것인데 이때
